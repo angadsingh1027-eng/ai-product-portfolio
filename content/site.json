@@ -12,6 +12,7 @@
     { "label": "Contact", "to": "/contact" }
   ],
   "footer": "Built with plain files and care.",
+  "labels": { "masked": "Figure withheld" },
   "pages": {
     "home": {
       "title": "Angad Singh | AI Product Manager",

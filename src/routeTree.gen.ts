@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BuildsRouteImport } from './routes/builds'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as JourneyRouteImport } from './routes/journey'
 import { Route as ProofRouteImport } from './routes/proof'
 import { Route as WritingRouteImport } from './routes/writing'
@@ -31,6 +32,11 @@ const BuildsRoute = BuildsRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JourneyRoute = JourneyRouteImport.update({
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/builds': typeof BuildsRoute
   '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
   '/journey': typeof JourneyRoute
   '/proof': typeof ProofRoute
   '/writing': typeof WritingRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/builds': typeof BuildsRoute
   '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
   '/journey': typeof JourneyRoute
   '/proof': typeof ProofRoute
   '/writing': typeof WritingRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/builds': typeof BuildsRoute
   '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
   '/journey': typeof JourneyRoute
   '/proof': typeof ProofRoute
   '/writing': typeof WritingRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/builds'
     | '/contact'
+    | '/gallery'
     | '/journey'
     | '/proof'
     | '/writing'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/builds'
     | '/contact'
+    | '/gallery'
     | '/journey'
     | '/proof'
     | '/writing'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/builds'
     | '/contact'
+    | '/gallery'
     | '/journey'
     | '/proof'
     | '/writing'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BuildsRoute: typeof BuildsRoute
   ContactRoute: typeof ContactRoute
+  GalleryRoute: typeof GalleryRoute
   JourneyRoute: typeof JourneyRoute
   ProofRoute: typeof ProofRoute
   WritingRoute: typeof WritingRoute
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/journey': {
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BuildsRoute: BuildsRoute,
   ContactRoute: ContactRoute,
+  GalleryRoute: GalleryRoute,
   JourneyRoute: JourneyRoute,
   ProofRoute: ProofRoute,
   WritingRoute: WritingRoute,
