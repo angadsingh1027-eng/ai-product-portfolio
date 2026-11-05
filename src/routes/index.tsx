@@ -29,7 +29,7 @@ function Hero() {
           alt={site.photo.alt}
           width={96}
           height={96}
-          className="mb-6 size-24 rounded-full object-cover"
+          className="mb-6 size-24 rounded-full object-cover object-top"
         />
       )}
       <p className="text-sm font-medium text-primary">{p.eyebrow}</p>

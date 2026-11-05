@@ -65,7 +65,7 @@ describe("work lineup", () => {
     for (const kpi of jpm?.kpis ?? []) expect(kpi.masked).toBe(true);
   });
 
-  it("Nexus is a build with a case-study page, and is not in the Projects list", () => {
+  it("Fleet Bidding Intelligence is a build with a case-study page, and is not in the Projects list", () => {
     const nexus = getCase("nexus-fleet-intelligence");
     expect(nexus?.placement).toBe("builds");
     expect(nexus?.depth).toBe("full");

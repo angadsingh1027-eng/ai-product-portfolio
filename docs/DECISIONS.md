@@ -141,7 +141,7 @@ Newest changes first in the "Change history" table; full records below. Status v
 
 ### ADR-016: Work lineup, Nexus placement and scope
 - **Status:** Accepted (owner decision)
-- **Decision:** Work shows Zeta (voice, full case), then JPMorganChase (agentic ways of working, snapshot) and HashedIn (agent ROI, snapshot). Nexus Fleet Intelligence is a build with its own case-study page, linked from Builds (`placement: builds`). Osmo and Accenture stay in Journey only. Writing, the Journey themes chronology and a visual redesign are outside Phase 1.
+- **Decision:** Work shows Zeta (voice, full case), then JPMorganChase (agentic ways of working, snapshot) and HashedIn (agent ROI, snapshot). Nexus Fleet Intelligence is a build with its own case-study page, linked from Builds (`placement: builds`). Osmo and Accenture stay in Journey only. The build is shown as "Fleet Bidding Intelligence" (renamed from Nexus for clarity); its address stays `nexus-fleet-intelligence`. Writing, the Journey themes chronology and a visual redesign are outside Phase 1.
 
 ### ADR-017: Content model v2
 - **Status:** Accepted

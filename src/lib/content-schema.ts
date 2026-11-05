@@ -227,7 +227,7 @@ export const siteSchema = z
         })
         .strict(),
     ),
-    footer: text,
+    footer: text.optional(),
     labels: z.object({ masked: text, kinds: z.record(text) }).strict(),
     pages: z.object({}).passthrough(),
     case: z.object({}).passthrough(),
