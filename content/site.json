@@ -64,15 +64,5 @@
     "proofHeading": "Proof",
     "kpiHeading": "Key results",
     "back": "All work"
-  },
-  "gate": {
-    "heading": "Depth",
-    "description": "Detailed decisions, evals and internal accomplishments. Enter the password shared with you.",
-    "placeholder": "Password",
-    "submit": "Unlock",
-    "loading": "Checking…",
-    "error": "That password didn't work.",
-    "rateLimited": "Too many attempts. Please try again later.",
-    "unconfigured": "The unlock service isn't configured yet."
   }
 }

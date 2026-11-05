@@ -127,5 +127,6 @@ Three independent layers, each changeable by its own commits: `content/` (data),
 - **Content format (replaces the case format in sections 2 and 3):** `content/work/<slug>.json` plus `<slug>.md`; `journey.json` replaces `timeline.json`; see `CLAUDE.md` and ADR-011. Private text is not in this repo (ADR-009).
 - **Branch:** the Lovable-synced branch is `lovable-sync`. Feature branch, pull request, merge, then Publish in Lovable.
 - **Stack:** Lovable generated TanStack Start (server-rendered, Cloudflare), not a browser-only Vite app (ADR-012).
-- **Gate:** contract unchanged. The client is `src/components/DepthGate.tsx`; `scripts/mock-gate.mjs` replaces `mock-gate.ts` for local development. The backend phase (Supabase table, RLS, edge function, `content:sync`) is still to build.
+- **Gate:** superseded. Nothing is gated and there is no backend (ADR-014); sections 5, 6c and the gate parts of 7 and 9 no longer apply. JPMorganChase figures appear as masked values (ADR-015).
+- **Content model:** see ADR-017 and `CLAUDE.md` for the current fields, limits and taxonomy.
 - **Validation:** `npm run content:validate` runs `src/test/content.test.ts`.

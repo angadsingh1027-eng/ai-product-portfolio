@@ -30,6 +30,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# Gated content: kept in its own private repo, never in this one (ADR-009)
-content-private/

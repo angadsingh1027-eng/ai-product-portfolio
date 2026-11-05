@@ -1,0 +1,20 @@
+{
+  "status": ["Live", "Demo", "Early access", "Shipped", "Archived"],
+  "buildKind": ["shipped", "craft"],
+  "depth": ["full", "snapshot", "mention"],
+  "placement": ["work", "builds"],
+  "highlightKind": ["award", "credential", "quote"],
+  "tags": [
+    "agentic-ai",
+    "llm-evals",
+    "rag",
+    "voice-ai",
+    "platform",
+    "zero-to-one",
+    "prototyping",
+    "discovery",
+    "marketplace",
+    "controls",
+    "spec-driven-development"
+  ]
+}

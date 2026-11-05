@@ -1,12 +1,18 @@
 {
   "slug": "nexus-fleet-intelligence",
-  "order": 2,
+  "order": 4,
   "title": "Nexus Fleet Intelligence",
+  "tagline": "A trucking co-pilot that cuts bid decisions from minutes to seconds",
   "company": "Independent · Maven AI PM Community",
   "year": "2025",
   "role": "Product lead and co-builder",
   "domain": "Agentic AI co-pilot, trucking and logistics",
   "summary": "An agentic co-pilot that cuts a small fleet's load-bid decision from about 10 minutes to seconds; recognised as the most market-ready idea at Maven Pitch Day 2025.",
+  "status": "Demo",
+  "depth": "full",
+  "placement": "builds",
+  "featured": false,
+  "chips": [{ "text": "10 min to seconds" }, { "text": "3-week MVP" }, { "text": "Most market-ready idea" }],
   "brief": [
     "Problem: small fleets lose loads on latency, not merit. Managers cross-reference 8+ variables across 2-5 load boards for about 10 minutes per bid.",
     "Call: picked load bidding as the highest-value, underserved agentic AI wedge, and scoped a 3-week MVP around a profit-first ranked view.",
@@ -16,14 +22,13 @@
   ],
   "kpis": [
     { "label": "Load bid decision time", "value": "10 min to seconds", "how": "Agentic co-pilot consolidates 8+ variables into ranked, profit-first recommendations", "featured": true },
-    { "label": "Market opportunity identified", "value": "$500M+ ARR", "how": "TAM $1.3B-$3.5B (small fleets), $641M-$1.5B (micro-fleets), US and Canada" },
+    { "label": "Market opportunity identified", "value": "$500M+ ARR", "how": "TAM $1.3B-$3.5B (small fleets), $641M-$1.5B (micro-fleets), US and Canada", "scope": "estimated" },
     { "label": "Prototype delivery", "value": "3 weeks", "how": "Lean agentic AI build from discovery to working demo" },
-    { "label": "Empty miles addressed", "value": "16.7% of miles (estimated)", "how": "Backhaul finder targets deadhead reduction" }
+    { "label": "Empty miles addressed", "value": "16.7% of miles", "how": "Backhaul finder targets deadhead reduction", "scope": "estimated" }
   ],
   "proof": [
     { "type": "video", "label": "Product demo (2:27)", "href": "https://www.loom.com/share/3547048b91674d1db4d9d9e94f4a5b0a" },
     { "type": "link", "label": "Mahesh Yadav on the project (LinkedIn)", "href": "https://www.linkedin.com/posts/initmahesh_doing-the-things-that-dont-scale-and-pushing-ugcPost-7388702226375983104-b7m7/" }
   ],
-  "tags": ["agentic-ai", "zero-to-one", "prototyping", "discovery"],
-  "hasPrivateDepth": false
+  "tags": ["agentic-ai", "zero-to-one", "prototyping", "discovery"]
 }

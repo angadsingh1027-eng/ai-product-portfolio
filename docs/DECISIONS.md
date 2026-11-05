@@ -6,6 +6,9 @@ Newest changes first in the "Change history" table; full records below. Status v
 
 | Date | Decision | Change |
 |---|---|---|
+| 2026-11-06 | ADR-014 | Nothing is gated; the gate code is removed. Supersedes ADR-003, 004, 008 and 009. |
+| 2026-11-06 | ADR-015 | JPMorganChase figures appear as masked values (X%, Y×, Z%). |
+| 2026-11-06 | ADR-016 to 018 | Work lineup, content model v2, US spelling. |
 | 2026-11-05 | ADR-008 | Gated depth moves from v2 into the MVP, to protect JPMorganChase accomplishments. Supersedes ADR-002. |
 | 2026-11-05 | ADR-009 | Accepted: `content-private/` is gitignored in the site repo and kept in its own private repo. |
 | 2026-11-05 | ADR-010 | Profile facts: resume wins for recent roles; LinkedIn wins for titles. |
@@ -23,14 +26,14 @@ Newest changes first in the "Change history" table; full records below. Status v
 - **Original rationale:** ship sooner, nothing sensitive deployed, private content not yet drafted.
 
 ## ADR-003: Gate model is one shared password
-- **Status:** Accepted
+- **Status:** Superseded by ADR-014 (2026-11-06)
 - **Decision:** One salted hash, one edge function, no accounts.
 - **Gains:** simplest backend; no friction for readers.
 - **Costs:** the password can be forwarded; one person cannot be revoked; no view analytics.
 - **Revisit if:** the gated content becomes more sensitive (see ADR-008), or you need to know who read what. Then move to per-person codes with expiry and a view log.
 
 ## ADR-004: Backend lives in your own Supabase project
-- **Status:** Accepted
+- **Status:** Superseded by ADR-014 (2026-11-06)
 - **Decision:** Table, RLS, edge function and secrets are managed with the Supabase CLI from `supabase/`; Lovable publishes only the frontend.
 - **Gains:** portable backend; secrets stay out of Lovable; frontend depends on one URL.
 - **Costs:** a second system to manage; free tier may pause idle projects (verify current limits).
@@ -50,7 +53,7 @@ Newest changes first in the "Change history" table; full records below. Status v
 - **Decision:** `/contact` shows email, LinkedIn and calendar links from `site.json`. No form.
 
 ## ADR-008: Gated depth moves into the MVP to protect JPMorganChase accomplishments
-- **Status:** Accepted (owner decision, 2026-11-05). Supersedes ADR-002.
+- **Status:** Superseded by ADR-014 and ADR-015 (2026-11-06)
 - **Context:** The resume lists JPMorganChase accomplishments with internal metrics. The earlier rule was to show only the role line. (The metrics themselves are deliberately not repeated here; this file ships with the repo.)
 - **Decision:**
   1. The public site still shows only the JPMorganChase role line.
@@ -66,7 +69,7 @@ Newest changes first in the "Change history" table; full records below. Status v
 - **Revisit if:** you want to revoke one recipient or see who read what (per-person codes with expiry), or your employer objects.
 
 ## ADR-009: `content-private/` stays out of the site repo and Lovable
-- **Status:** Accepted (owner decision, 2026-11-05)
+- **Status:** Superseded by ADR-014 (2026-11-06)
 - **Context:** The spec kept `content-private/` in the same repo as the site, and Lovable reads that repo. A public repo or Lovable's tools would expose the gated text.
 - **Decision:**
   1. `content-private/` is listed in the site repo's `.gitignore`, so the site's GitHub repo and Lovable never hold it. Add the ignore rule before the first commit; a file already committed stays in history.
@@ -90,15 +93,10 @@ Newest changes first in the "Change history" table; full records below. Status v
   - Zeta: LLM-as-a-judge automating about 20% of evaluations is added to the case.
 - **Not on the site:** the resume phone number.
 
-## Open items
+## Open items (as of 2026-11-05; see the backlog for the current list)
 
 - Ace Award issuer and year, and the issuer of the Agentic AI Product Management certification (LinkedIn lists it three times).
-- One-line lesson for both case Leader Briefs.
-- Confirm "US card issuer": none of the source PDFs states the country.
 - Confirm the GitHub URL in `site.json`; it appears in none of the source PDFs.
-- `site.json` `featuredStats` repeats case KPIs, which breaks "change a metric once". Replace it by flagging KPIs as `featured`.
-- The spec says "5-line" Leader Brief but defines four fields; the `featured` case field is not in the spec's frontmatter list.
-- Private depth for the two cases is still TODO; the UI hides empty blocks.
 
 ## Amendments after the Lovable project was created (2026-11-05)
 
@@ -124,3 +122,32 @@ Newest changes first in the "Change history" table; full records below. Status v
 ### Amendments to earlier records
 - ADR-005 and the change history: read "main" as `lovable-sync`.
 - The gate API contract (ADR-004, ADR-008) is unchanged: `POST {VITE_GATE_API_URL}/verify-password` with `{ slug, password }`.
+
+## Decisions after the content review (2026-11-06)
+
+### ADR-014: Nothing is gated; there is no backend
+- **Status:** Accepted (owner decision)
+- **Decision:** The site has no password, gate, backend or private folder. The gate code (`DepthGate`, the mock gate, the gate URL setting and gate wording) was removed in PR 1; git history keeps it. A test fails if gate code or wording returns.
+- **Supersedes:** ADR-003 (shared password), ADR-004 (Supabase backend), ADR-008 (gate in v1), ADR-009 (private content stays out of git).
+- **Gains:** no backend to build, host or secure; one consistent public site; nothing to leak.
+- **Costs:** real confidential figures cannot appear on the site; they stay in the owner's shared resume (ADR-015).
+- **Revisit if:** the owner decides to publish real figures behind access control.
+
+### ADR-015: JPMorganChase figures appear as masked values
+- **Status:** Accepted (owner decision)
+- **Decision:** The work can be described in public. Withheld figures show as masked values (X%, Y×, Z%) with no footnote, and specific metric names. A masked KPI or chip holds no digits (enforced by schema tests). Masked values appear only on the JPMorganChase card, never in the Home impact strip or on the Recognition page. No toolstack names appear; model names may.
+- **Gains:** the card keeps the same anatomy as the others and shows that results were measured.
+- **Costs:** masked values can read as placeholders and are less convincing than real numbers.
+
+### ADR-016: Work lineup, Nexus placement and scope
+- **Status:** Accepted (owner decision)
+- **Decision:** Work shows Zeta (voice, full case), then JPMorganChase (agentic ways of working, snapshot) and HashedIn (agent ROI, snapshot). Nexus Fleet Intelligence is a build with its own case-study page, linked from Builds (`placement: builds`). Osmo and Accenture stay in Journey only. Writing, the Journey themes chronology and a visual redesign are outside Phase 1.
+
+### ADR-017: Content model v2
+- **Status:** Accepted
+- **Decision:** Cases gain `tagline`, `status`, `depth` (full or snapshot), `placement`, `featured` and up to three `chips`; KPIs gain `scope`, `masked` and `featuredOrder`; builds gain `kind`, `status` and `caseStudy`. Allowed values live in `content/taxonomy.json`. Length limits (title 60, tagline 110, chip 24, KPI value 18, summary 280) are enforced by tests. Highlight and site-settings schemas arrive with their pages in PR 3 and PR 4.
+
+### ADR-018: US spelling
+- **Status:** Accepted (owner decision)
+- **Decision:** All copy uses US spelling. A clean-up of existing content lands in PR 4.
+
