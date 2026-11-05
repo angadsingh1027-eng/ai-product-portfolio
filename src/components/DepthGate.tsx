@@ -95,12 +95,16 @@ export function DepthGate({ id }: { id: string }) {
       autoTried.current = true;
       void unlock(sharedPw, true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, sharedPw]);
 
   function submit(e: FormEvent) {
     e.preventDefault();
     void unlock(pw, false);
   }
+
+  // No gate API configured yet: show nothing rather than a lock that cannot open.
+  if (!import.meta.env["VITE_GATE_API_URL"]) return null;
 
   if (state === "open") {
     // The text comes from our own gate backend, not from visitors.
