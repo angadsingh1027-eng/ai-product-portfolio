@@ -1,0 +1,30 @@
+{
+  "slug": "zeta-agentic-platform",
+  "order": 1,
+  "title": "Agentic AI Conversational Platform",
+  "company": "Zeta",
+  "year": "Mar 2024 – Apr 2025",
+  "role": "Senior Product Manager",
+  "domain": "Enterprise AI platform (voice and chat), banking and fintech",
+  "summary": "A 0-to-1 agentic platform with three-tier resolution that deflected about 30% of calls for a card issuer.",
+  "brief": [
+    "Problem: a card issuer's contact center could not keep pace with 150K+ cardholders growing by 20K a month, with wait times rising about 20% month on month.",
+    "Call: chose a three-tier resolution model (RAG self-serve, agentic transactional flows, human escalation) on a hybrid NLU + LLM design, instead of a single LLM bot.",
+    "Role: Senior Product Manager; led the 0-to-1 build.",
+    "Result: about 30% call deflection, 93.5%+ command generation accuracy, and an evaluation framework adopted across the AI platform.",
+    "Lesson: TODO: one-line lesson from Angad"
+  ],
+  "kpis": [
+    { "label": "Call volume deflected", "value": "~30%", "how": "3-tier routing: RAG, agentic flows, human escalation", "featured": true },
+    { "label": "Command generation accuracy", "value": "93.5%+", "how": "GPT-4o fine-tuned after a head-to-head benchmark vs Claude", "featured": true },
+    { "label": "Contact reasons surfaced", "value": "69", "how": "LLM clustering of 100K+ call transcripts", "featured": true },
+    { "label": "NLU classifier accuracy", "value": "95% / 83%", "how": "95% on GPT-generated data, 83% on real transcripts, +2% via human-in-the-loop" },
+    { "label": "MVP launch", "value": "30% faster", "how": "Assumption-first prioritisation and lean validation cycles" }
+  ],
+  "proof": [
+    { "type": "video", "label": "Elena suite: voice assistant demo (Zeta)", "href": "https://youtu.be/uLPtvBbHPDA" },
+    { "type": "pdf", "label": "Elena whitepaper (Zeta): architecture, guardrails and adoption framework", "href": "https://www.zeta.tech/us/resources/insights/whitepapers/elena-next-gen-conversational-ai-for-card-support-and-assistance/" }
+  ],
+  "tags": ["agentic-ai", "llm-evals", "rag", "voice-ai", "platform"],
+  "hasPrivateDepth": false
+}

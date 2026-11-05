@@ -1,6 +1,8 @@
 {
-  "name": "Alex Morgan",
+  "name": "Angad Singh",
   "role": "AI Product Manager",
+  "location": "Bengaluru, India",
+  "photo": { "src": "/angad-singh-photo.png", "alt": "Portrait of Angad Singh" },
   "nav": [
     { "label": "Work", "to": "/work" },
     { "label": "Builds", "to": "/builds" },
@@ -12,58 +14,65 @@
   "footer": "Built with plain files and care.",
   "pages": {
     "home": {
-      "title": "Alex Morgan — AI Product Manager",
-      "description": "I turn messy AI capabilities into products people trust and use every day.",
+      "title": "Angad Singh | AI Product Manager",
+      "description": "AI PM focused on agentic workflows, LLM evals and enterprise platforms. Case studies, live builds and writing.",
       "eyebrow": "AI Product Manager",
-      "headline": "I ship AI products that earn trust, not just demos.",
-      "intro": "Eight years shaping products across search, assistants and developer tools. I work at the seam between research, engineering and the people who actually use the thing.",
+      "headline": "I build GenAI products that hold up in production, not just demos.",
+      "intro": "Vice President, Product Manager at JPMorganChase since July 2026, managing a suite of agentic solutions that improve the effectiveness and controls of the Product Development Life Cycle.",
       "primaryCta": { "label": "See the work", "to": "/work" },
       "secondaryCta": { "label": "Get in touch", "to": "/contact" },
-      "featuredHeading": "Selected work"
+      "statsHeading": "Selected results",
+      "featuredHeading": "Selected work",
+      "videoHeading": "Watch"
     },
     "work": {
       "title": "Work",
-      "description": "Case studies in shipping AI products — the brief, the proof, and the decisions behind them."
+      "description": "Case studies in shipping AI products: the brief, the proof, and the decisions behind them."
     },
     "builds": {
       "title": "Builds",
-      "description": "Things I've prototyped and shipped myself to stay close to the materials."
+      "description": "Things I've prototyped and shipped myself to stay close to the materials.",
+      "moreLink": { "label": "More on GitHub", "href": "https://github.com/angadsingh1027-eng" }
     },
     "writing": {
       "title": "Writing",
-      "description": "Notes on product judgement, evaluation and building with models."
+      "description": "Notes on shipping AI products.",
+      "empty": "Curated posts are coming soon.",
+      "linkedin": { "label": "Read my posts on LinkedIn", "href": "https://www.linkedin.com/in/angadsingh27" }
     },
     "journey": {
       "title": "Journey",
-      "description": "The roles, teams and lessons that got me here."
+      "description": "The roles, teams and schools behind the work."
     },
     "proof": {
       "title": "Proof",
-      "description": "Talks, press, references and numbers you can check."
+      "description": "Awards and recognition, plus the numbers behind the work."
     },
     "contact": {
       "title": "Contact",
-      "description": "Open to senior AI product roles and advisory work.",
-      "body": "The fastest way to reach me is email. I reply within two working days.",
+      "description": "Email, LinkedIn and GitHub.",
+      "body": "Email is the fastest way to reach me.",
       "links": [
-        { "label": "Email", "value": "hello@example.com", "href": "mailto:hello@example.com" },
-        { "label": "LinkedIn", "value": "linkedin.com/in/example", "href": "https://linkedin.com" },
-        { "label": "GitHub", "value": "github.com/example", "href": "https://github.com" }
+        { "label": "Email", "value": "angadsingh.1027@gmail.com", "href": "mailto:angadsingh.1027@gmail.com" },
+        { "label": "LinkedIn", "value": "linkedin.com/in/angadsingh27", "href": "https://www.linkedin.com/in/angadsingh27" },
+        { "label": "GitHub", "value": "github.com/angadsingh1027-eng", "href": "https://github.com/angadsingh1027-eng" }
       ]
     }
   },
   "case": {
     "briefHeading": "Leader Brief",
     "proofHeading": "Proof",
+    "kpiHeading": "Key results",
     "back": "All work"
   },
   "gate": {
     "heading": "Depth",
-    "description": "Detailed metrics, internal decisions and artefacts. Enter the password shared with you.",
+    "description": "Detailed decisions, evals and internal accomplishments. Enter the password shared with you.",
     "placeholder": "Password",
     "submit": "Unlock",
     "loading": "Checking…",
     "error": "That password didn't work.",
+    "rateLimited": "Too many attempts. Please try again later.",
     "unconfigured": "The unlock service isn't configured yet."
   }
 }

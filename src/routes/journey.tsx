@@ -21,8 +21,8 @@ function Journey() {
             <p className="text-sm text-muted-foreground">{j.period}</p>
             <h2 className="mt-1 font-serif text-2xl">{j.role}</h2>
             <p className="text-sm font-medium">{j.company}</p>
-            <p className="mt-2 text-muted-foreground">{j.summary}</p>
-            {j.gated && <DepthGate id={`role:${j.id}`} />}
+            {j.summary && <p className="mt-2 text-muted-foreground">{j.summary}</p>}
+            {j.gated && <DepthGate id={j.id} />}
           </li>
         ))}
       </ol>

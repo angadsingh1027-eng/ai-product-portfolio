@@ -24,6 +24,9 @@ function Builds() {
           </li>
         ))}
       </ul>
+      {p.moreLink && (
+        <a href={p.moreLink.href} target="_blank" rel="noreferrer" className="mt-8 inline-block text-sm text-primary hover:underline">{p.moreLink.label} ↗</a>
+      )}
     </>
   );
 }

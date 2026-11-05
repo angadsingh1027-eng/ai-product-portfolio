@@ -31,5 +31,10 @@ use the editor.
 
 ## Project rules
 - All user-facing copy lives in `/content` (JSON + markdown) loaded via `import.meta.glob` in `src/lib/content.ts`; never hardcode copy in components. Why: owner edits content without touching code.
-- Case studies are `content/work/<slug>.json` (meta, brief, proof) paired with `<slug>.md` (body). Why: structured fields without a frontmatter parser.
-- Depth gates POST `{id, password}` to `VITE_GATE_API_URL` and render returned `html`; backend lives elsewhere.
+- Case studies are `content/work/<slug>.json` (meta, 5-line brief, KPIs, proof) paired with `<slug>.md` (body with four `##` sections). Why: structured fields without a frontmatter parser. KPIs flagged `featured` feed the home and Proof numbers; never repeat a metric elsewhere.
+- No invented facts. Unconfirmed facts are written as `TODO:` in the content file; the loader hides any item that contains one. Schemas live in `src/lib/content-schema.ts`; `npm run content:validate` must pass.
+- Client anonymity: never name the card issuer behind the Zeta work; write "a card issuer". The employer Zeta may be named.
+- Depth gates POST `{slug, password}` to `{VITE_GATE_API_URL}/verify-password` and render the returned `content` (markdown). One password unlocks every gate for the tab session. The backend (own Supabase project) lives outside this repo.
+- Gated text never lives in this repo. `content-private/` is gitignored and kept in its own private repo; never commit it, import it from `src/`, or paste it into chat. The public JPMorganChase entry shows only the role line.
+- Work on a feature branch and open a pull request into `lovable-sync`. Merging does not publish; the owner clicks Publish in Lovable.
+- Full rules: `CLAUDE.md` and `docs/DECISIONS.md`.

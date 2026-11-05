@@ -1,40 +1,119 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore, type FormEvent } from "react";
+import { marked } from "marked";
 import { site } from "@/lib/content";
+
+type State = "idle" | "loading" | "error" | "open";
+
+// Gate client for POST {VITE_GATE_API_URL}/verify-password with { slug, password } -> { content }.
+// One correct password unlocks every gate on the site for this tab session. The password is
+// kept in memory only; unlocked text is cached in sessionStorage (optional, wrapped in try/catch).
+let sharedPassword: string | null = null;
+const listeners = new Set<() => void>();
+const setSharedPassword = (value: string | null) => {
+  sharedPassword = value;
+  listeners.forEach((l) => l());
+};
+const subscribe = (l: () => void) => {
+  listeners.add(l);
+  return () => {
+    listeners.delete(l);
+  };
+};
+const getSnapshot = () => sharedPassword;
+const getServerSnapshot = () => null;
+
+const cacheKey = (id: string) => `gate:${id}`;
+const readCache = (id: string): string | null => {
+  try {
+    return sessionStorage.getItem(cacheKey(id));
+  } catch {
+    return null;
+  }
+};
+const writeCache = (id: string, content: string) => {
+  try {
+    sessionStorage.setItem(cacheKey(id), content);
+  } catch {
+    /* storage unavailable: the gate still works, it just asks again after a refresh */
+  }
+};
+
+async function verify(id: string, password: string): Promise<string> {
+  const base = import.meta.env["VITE_GATE_API_URL"] as string | undefined;
+  if (!base) throw new Error("unconfigured");
+  const res = await fetch(`${base.replace(/\/$/, "")}/verify-password`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ slug: id, password }),
+  });
+  if (res.status === 429) throw new Error("rate");
+  if (!res.ok) throw new Error("denied");
+  const data = (await res.json().catch(() => ({}))) as { content?: unknown };
+  if (typeof data.content !== "string") throw new Error("denied");
+  return data.content;
+}
 
 export function DepthGate({ id }: { id: string }) {
   const g = site.gate;
+  const sharedPw = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const [pw, setPw] = useState("");
-  const [state, setState] = useState<"idle" | "loading" | "error" | "open">("idle");
+  const [state, setState] = useState<State>("idle");
   const [msg, setMsg] = useState("");
-  const [html, setHtml] = useState("");
+  const [content, setContent] = useState("");
+  const autoTried = useRef(false);
 
-  async function submit(e: FormEvent) {
-    e.preventDefault();
-    const url = import.meta.env["VITE_GATE_API_URL"] as string | undefined;
-    if (!url) {
-      setState("error");
-      setMsg(g.unconfigured);
-      return;
-    }
+  async function unlock(candidate: string, quiet: boolean) {
     setState("loading");
     try {
-      const res = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id, password: pw }),
-      });
-      if (!res.ok) throw new Error();
-      const data = await res.json().catch(() => ({}));
-      setHtml(typeof data.html === "string" ? data.html : "");
+      const text = await verify(id, candidate);
+      writeCache(id, text);
+      setContent(text);
       setState("open");
-    } catch {
+      setSharedPassword(candidate);
+    } catch (e) {
+      if (quiet) {
+        setState("idle");
+        return;
+      }
+      const code = e instanceof Error ? e.message : "denied";
+      setMsg(code === "unconfigured" ? g.unconfigured : code === "rate" ? g.rateLimited : g.error);
       setState("error");
-      setMsg(g.error);
     }
   }
 
+  // Restore from this session's cache, or reuse a password already accepted elsewhere on the site.
+  useEffect(() => {
+    if (autoTried.current) return;
+    const cached = readCache(id);
+    if (cached !== null) {
+      autoTried.current = true;
+      setContent(cached);
+      setState("open");
+      return;
+    }
+    if (sharedPw) {
+      autoTried.current = true;
+      void unlock(sharedPw, true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, sharedPw]);
+
+  function submit(e: FormEvent) {
+    e.preventDefault();
+    void unlock(pw, false);
+  }
+
+  // No gate API configured yet: show nothing rather than a lock that cannot open.
+  if (!import.meta.env["VITE_GATE_API_URL"]) return null;
+
   if (state === "open") {
-    return <div className="prose-content mt-4 rounded-lg border p-5" dangerouslySetInnerHTML={{ __html: html }} />;
+    // The text comes from our own gate backend, not from visitors.
+    return (
+      <div
+        className="prose-content mt-4 rounded-lg border p-5"
+        dangerouslySetInnerHTML={{ __html: marked.parse(content, { async: false }) as string }}
+      />
+    );
   }
 
   return (
@@ -52,6 +131,7 @@ export function DepthGate({ id }: { id: string }) {
           onChange={(e) => setPw(e.target.value)}
           placeholder={g.placeholder}
           aria-label={g.placeholder}
+          autoComplete="off"
           className="h-10 flex-1 rounded-md border bg-background px-3 text-sm outline-none focus:border-primary"
         />
         <button disabled={state === "loading"} className="h-10 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:opacity-60">

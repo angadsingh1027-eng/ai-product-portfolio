@@ -1,12 +1,25 @@
 {
-  "metrics": [
-    { "value": "31%", "label": "Lower handle time" },
-    { "value": "18%", "label": "Search conversion lift" },
-    { "value": "1.2k", "label": "Daily active agents" }
-  ],
   "links": [
-    { "type": "Talk", "title": "Evaluating copilots in production", "source": "AI Product Summit 2026", "href": "https://example.com" },
-    { "type": "Press", "title": "How Helpline built a copilot agents trust", "source": "Example Weekly", "href": "https://example.com" },
-    { "type": "Reference", "title": "\"The clearest product thinker I've worked with.\"", "source": "VP Engineering, Helpline", "href": "https://example.com" }
+    {
+      "type": "Award",
+      "title": "Most market-ready idea",
+      "source": "Maven AI PM Community Pitch Day, 2025 (Nexus Fleet Intelligence)",
+      "href": "https://www.linkedin.com/posts/initmahesh_doing-the-things-that-dont-scale-and-pushing-ugcPost-7388702226375983104-b7m7/"
+    },
+    {
+      "type": "Award",
+      "title": "Best Idea Spotting, Education vertical",
+      "source": "Jagriti Yatra, 2025 (among 500+ changemakers)"
+    },
+    {
+      "type": "Award",
+      "title": "Ace Award",
+      "source": "TODO: confirm issuer and year"
+    },
+    {
+      "type": "Certification",
+      "title": "Agentic AI Product Management Certification",
+      "source": "TODO: confirm issuer"
+    }
   ]
 }
