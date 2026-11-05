@@ -139,16 +139,16 @@
       "body": "A LinkedIn message is the fastest way to reach me.",
       "links": [
         {
-          "label": "Email",
-          "value": "angadsingh.1027@gmail.com",
-          "href": "mailto:angadsingh.1027@gmail.com",
-          "icon": "mail"
-        },
-        {
           "label": "LinkedIn",
           "value": "linkedin.com/in/angadsingh27",
           "href": "https://www.linkedin.com/in/angadsingh27",
           "icon": "linkedin"
+        },
+        {
+          "label": "Email",
+          "value": "angadsingh.1027@gmail.com",
+          "href": "mailto:angadsingh.1027@gmail.com",
+          "icon": "mail"
         },
         {
           "label": "GitHub",
