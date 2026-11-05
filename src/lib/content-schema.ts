@@ -155,8 +155,17 @@ export const siteSchema = z
     role: text,
     location: text,
     photo: z.object({ src: text, alt: text }).strict(),
-    nav: z.array(z.object({ label: text, to: text }).strict()),
+    nav: z.array(
+      z
+        .object({
+          label: text,
+          to: text,
+          min: z.object({ collection: text, count: z.number() }).strict().optional(),
+        })
+        .strict(),
+    ),
     footer: text,
+    labels: z.object({ masked: text }).strict(),
     pages: z.object({}).passthrough(),
     case: z.object({}).passthrough(),
   })
