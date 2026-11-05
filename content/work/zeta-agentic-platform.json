@@ -25,7 +25,7 @@
     { "label": "Command generation accuracy", "value": "93.5%+", "how": "GPT-4o fine-tuned after a head-to-head benchmark vs Claude" },
     { "label": "Contact reasons surfaced", "value": "69", "how": "LLM clustering of 100K+ call transcripts" },
     { "label": "NLU classifier accuracy", "value": "95% / 83%", "how": "95% on GPT-generated data, 83% on real transcripts, +2% via human-in-the-loop" },
-    { "label": "MVP launch", "value": "30% faster", "how": "Assumption-first prioritisation and lean validation cycles" }
+    { "label": "MVP launch", "value": "30% faster", "how": "Assumption-first prioritization and lean validation cycles" }
   ],
   "proof": [
     { "type": "video", "label": "Elena suite: voice assistant demo (Zeta)", "href": "https://youtu.be/uLPtvBbHPDA", "hero": true },

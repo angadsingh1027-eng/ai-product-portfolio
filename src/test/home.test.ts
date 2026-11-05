@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { builds, cases, featuredKpis, getCase, proof, site } from "@/lib/content";
+import { builds, cases, featuredKpis, getCase, recognition, site } from "@/lib/content";
 import { homeSchema, slotIds } from "@/lib/content-schema";
 import { slotItems } from "@/lib/home";
 
@@ -35,7 +35,7 @@ describe("home slots", () => {
 
   it("the recognition slot has at least the three items it needs", () => {
     const rule = homeSchema.parse(site.pages.home).slots.find((s) => s.id === "recognition");
-    expect(proof.links.length).toBeGreaterThanOrEqual(rule?.min ?? 1);
+    expect(recognition.length).toBeGreaterThanOrEqual(rule?.min ?? 1);
   });
 });
 

@@ -2,17 +2,41 @@
   "name": "Angad Singh",
   "role": "AI Product Manager",
   "location": "Bengaluru, India",
-  "photo": { "src": "/angad-singh-photo.png", "alt": "Portrait of Angad Singh" },
+  "photo": {
+    "src": "/angad-singh-photo.png",
+    "alt": "Portrait of Angad Singh"
+  },
   "nav": [
-    { "label": "Projects", "to": "/work" },
-    { "label": "Builds", "to": "/builds" },
-    { "label": "Writing", "to": "/writing" },
-    { "label": "Journey", "to": "/journey" },
-    { "label": "Proof", "to": "/proof" },
-    { "label": "Contact", "to": "/contact" }
+    {
+      "label": "Projects",
+      "to": "/work"
+    },
+    {
+      "label": "Builds",
+      "to": "/builds"
+    },
+    {
+      "label": "Career Journey",
+      "to": "/journey"
+    },
+    {
+      "label": "Recognition",
+      "to": "/recognition"
+    },
+    {
+      "label": "Connect",
+      "to": "/connect"
+    }
   ],
   "footer": "Built with plain files and care.",
-  "labels": { "masked": "Figure withheld" },
+  "labels": {
+    "masked": "Figure withheld",
+    "kinds": {
+      "award": "Award",
+      "credential": "Credential",
+      "quote": "Quote"
+    }
+  },
   "pages": {
     "home": {
       "title": "Angad Singh | AI Product Manager",
@@ -20,29 +44,72 @@
       "eyebrow": "AI Product Manager",
       "headline": "I build products, with targeted AI intervention for delightful user experiences from idea to production.",
       "intro": "Vice President, Product Manager at JPMorganChase, managing a suite of agentic solutions that improve the effectiveness and controls of the Product Development Life Cycle.",
-      "primaryCta": { "label": "See the projects", "to": "/work" },
-      "secondaryCta": { "label": "Get in touch", "to": "/contact" },
+      "primaryCta": {
+        "label": "See the projects",
+        "to": "/work"
+      },
+      "secondaryCta": {
+        "label": "Get in touch",
+        "to": "/connect"
+      },
       "statsHeading": "Results",
       "featuredHeading": "Featured projects",
       "videoHeading": "See it in action",
       "principlesHeading": "How I work",
       "principles": [
-        { "title": "Decide when AI is the right call", "text": "Choose the architecture before the model: retrieval, agentic flows or a hybrid, with human-in-the-loop guardrails." },
-        { "title": "Treat evals as a product", "text": "Measure each part of the pipeline, such as speech, understanding and generation, so you know it is working." },
-        { "title": "Prototype before engineering scopes", "text": "Show a working demo first, so the build decision rests on something real." }
+        {
+          "title": "Decide when AI is the right call",
+          "text": "Choose the architecture before the model: retrieval, agentic flows or a hybrid, with human-in-the-loop guardrails."
+        },
+        {
+          "title": "Treat evals as a product",
+          "text": "Measure each part of the pipeline, such as speech, understanding and generation, so you know it is working."
+        },
+        {
+          "title": "Prototype before engineering scopes",
+          "text": "Show a working demo first, so the build decision rests on something real."
+        }
       ],
       "recognitionHeading": "Recognition",
       "latestHeading": "Latest",
       "nextHeading": "Connect",
       "slots": [
-        { "id": "hero" },
-        { "id": "impact", "min": 3, "max": 4 },
-        { "id": "how", "min": 1, "max": 3 },
-        { "id": "work", "min": 2, "max": 3 },
-        { "id": "media", "min": 1, "max": 1 },
-        { "id": "recognition", "min": 3, "max": 3 },
-        { "id": "latest", "min": 1, "max": 1 },
-        { "id": "next" }
+        {
+          "id": "hero"
+        },
+        {
+          "id": "impact",
+          "min": 3,
+          "max": 4
+        },
+        {
+          "id": "how",
+          "min": 1,
+          "max": 3
+        },
+        {
+          "id": "work",
+          "min": 2,
+          "max": 3
+        },
+        {
+          "id": "media",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "id": "recognition",
+          "min": 3,
+          "max": 3
+        },
+        {
+          "id": "latest",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "id": "next"
+        }
       ]
     },
     "work": {
@@ -51,33 +118,49 @@
     },
     "builds": {
       "title": "Builds",
-      "description": "Things I've prototyped and shipped myself to stay close to the materials.",
-      "moreLink": { "label": "More on GitHub", "href": "https://github.com/angadsingh1027-eng" },
+      "description": "Products I prototyped and shipped myself, to stay close to the materials.",
+      "moreLink": {
+        "label": "More on GitHub",
+        "href": "https://github.com/angadsingh1027-eng"
+      },
       "caseStudyLabel": "Read the case study"
     },
-    "writing": {
-      "title": "Writing",
-      "description": "Notes on shipping AI products.",
-      "empty": "Curated posts are coming soon.",
-      "linkedin": { "label": "Read my posts on LinkedIn", "href": "https://www.linkedin.com/in/angadsingh27" }
-    },
     "journey": {
-      "title": "Journey",
-      "description": "The roles, teams and schools behind the work."
+      "title": "Career Journey",
+      "description": "The roles, teams and schools that shaped how I build AI products."
     },
-    "proof": {
-      "title": "Proof",
-      "description": "Awards and recognition, plus the numbers behind the work."
+    "recognition": {
+      "title": "Recognition",
+      "description": "Awards and credentials from the work and the people around it."
     },
-    "contact": {
-      "title": "Contact",
+    "connect": {
+      "title": "Connect",
       "description": "Email, LinkedIn and GitHub.",
       "body": "Email is the fastest way to reach me.",
       "links": [
-        { "label": "Email", "value": "angadsingh.1027@gmail.com", "href": "mailto:angadsingh.1027@gmail.com" },
-        { "label": "LinkedIn", "value": "linkedin.com/in/angadsingh27", "href": "https://www.linkedin.com/in/angadsingh27" },
-        { "label": "GitHub", "value": "github.com/angadsingh1027-eng", "href": "https://github.com/angadsingh1027-eng" }
-      ]
+        {
+          "label": "Email",
+          "value": "angadsingh.1027@gmail.com",
+          "href": "mailto:angadsingh.1027@gmail.com"
+        },
+        {
+          "label": "LinkedIn",
+          "value": "linkedin.com/in/angadsingh27",
+          "href": "https://www.linkedin.com/in/angadsingh27"
+        },
+        {
+          "label": "GitHub",
+          "value": "github.com/angadsingh1027-eng",
+          "href": "https://github.com/angadsingh1027-eng"
+        }
+      ],
+      "heading": "Reach me"
+    },
+    "notFound": {
+      "code": "404",
+      "title": "Page not found",
+      "body": "The page you're looking for doesn't exist or has been moved.",
+      "cta": "Go home"
     }
   },
   "case": {
