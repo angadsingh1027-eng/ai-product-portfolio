@@ -25,7 +25,9 @@ export function NextStep({ heading, intro, items }: Props) {
               className="group flex justify-between gap-4 py-4"
             >
               <span className="text-muted-foreground">{i.label}</span>
-              <span className="truncate group-hover:text-primary">{i.value}</span>
+              <span className="truncate text-primary underline-offset-4 group-hover:underline">
+                {i.value}
+              </span>
             </a>
           </li>
         ))}
