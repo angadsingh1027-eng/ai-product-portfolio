@@ -21,9 +21,9 @@
     "Lesson: TODO: one-line lesson from Angad"
   ],
   "kpis": [
-    { "label": "Call volume deflected", "value": "~30%", "how": "3-tier routing: RAG, agentic flows, human escalation", "featured": true },
-    { "label": "Command generation accuracy", "value": "93.5%+", "how": "GPT-4o fine-tuned after a head-to-head benchmark vs Claude", "featured": true },
-    { "label": "Contact reasons surfaced", "value": "69", "how": "LLM clustering of 100K+ call transcripts", "featured": true },
+    { "label": "Call volume deflected", "value": "~30%", "how": "3-tier routing: RAG, agentic flows, human escalation", "featured": true, "featuredOrder": 1 },
+    { "label": "Command generation accuracy", "value": "93.5%+", "how": "GPT-4o fine-tuned after a head-to-head benchmark vs Claude" },
+    { "label": "Contact reasons surfaced", "value": "69", "how": "LLM clustering of 100K+ call transcripts" },
     { "label": "NLU classifier accuracy", "value": "95% / 83%", "how": "95% on GPT-generated data, 83% on real transcripts, +2% via human-in-the-loop" },
     { "label": "MVP launch", "value": "30% faster", "how": "Assumption-first prioritisation and lean validation cycles" }
   ],

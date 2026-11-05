@@ -1,0 +1,45 @@
+{
+  "slug": "hashedin-agent-roi",
+  "order": 3,
+  "title": "Agent ROI framework for AI Coworkers",
+  "tagline": "An ROI framework that lifted agent deflection 1.9x by focusing on the intents that matter",
+  "company": "HashedIn by Deloitte",
+  "year": "Feb 2026 – Jul 2026",
+  "role": "Senior Product Manager",
+  "domain": "AI Coworkers: Claude-powered agents for SDLC workflows",
+  "summary": "Defined the evaluation framework for agent ROI: separated structurally ineligible queries (~10% of volume), ran category deep-dives and targeted the 3 intents driving 76% of deflection. Invested in the knowledge base and surfaced self-serve flows, lifting agent deflection 1.9x.",
+  "depth": "snapshot",
+  "placement": "work",
+  "featured": true,
+  "chips": [
+    { "text": "1.9x agent deflection" },
+    { "text": "76% from 3 intents" },
+    { "text": "~10% queries ineligible" }
+  ],
+  "brief": [
+    "Problem: TODO: the problem, in your words",
+    "Call: separated structurally ineligible queries (~10% of volume) and targeted the 3 intents driving 76% of deflection.",
+    "Role: Senior Product Manager; defined the agent ROI evaluation framework.",
+    "Result: agent deflection lifted 1.9x after investing in the knowledge base and surfacing self-serve flows.",
+    "Lesson: TODO: one-line lesson from Angad"
+  ],
+  "kpis": [
+    {
+      "label": "Agent deflection lift",
+      "value": "1.9x",
+      "how": "After knowledge-base investment and surfaced self-serve flows"
+    },
+    {
+      "label": "Deflection from 3 intents",
+      "value": "76%",
+      "how": "Share of deflection driven by the three focus intents"
+    },
+    {
+      "label": "Structurally ineligible queries",
+      "value": "~10%",
+      "how": "Share of volume set aside before measuring ROI"
+    }
+  ],
+  "proof": [],
+  "tags": ["agentic-ai"]
+}

@@ -4,7 +4,7 @@
   "location": "Bengaluru, India",
   "photo": { "src": "/angad-singh-photo.png", "alt": "Portrait of Angad Singh" },
   "nav": [
-    { "label": "Work", "to": "/work" },
+    { "label": "Projects", "to": "/work" },
     { "label": "Builds", "to": "/builds" },
     { "label": "Writing", "to": "/writing" },
     { "label": "Journey", "to": "/journey" },
@@ -16,24 +16,44 @@
   "pages": {
     "home": {
       "title": "Angad Singh | AI Product Manager",
-      "description": "AI PM focused on agentic workflows, LLM evals and enterprise platforms. Case studies, live builds and writing.",
+      "description": "AI PM focused on agentic workflows, LLM evals and enterprise platforms. Case studies and live builds.",
       "eyebrow": "AI Product Manager",
-      "headline": "I build GenAI products that hold up in production, not just demos.",
-      "intro": "Vice President, Product Manager at JPMorganChase since July 2026, managing a suite of agentic solutions that improve the effectiveness and controls of the Product Development Life Cycle.",
-      "primaryCta": { "label": "See the work", "to": "/work" },
+      "headline": "I build products, with targeted AI intervention for delightful user experiences from idea to production.",
+      "intro": "Vice President, Product Manager at JPMorganChase, managing a suite of agentic solutions that improve the effectiveness and controls of the Product Development Life Cycle.",
+      "primaryCta": { "label": "See the projects", "to": "/work" },
       "secondaryCta": { "label": "Get in touch", "to": "/contact" },
-      "statsHeading": "Selected results",
-      "featuredHeading": "Selected work",
-      "videoHeading": "Watch"
+      "statsHeading": "Results",
+      "featuredHeading": "Featured projects",
+      "videoHeading": "See it in action",
+      "principlesHeading": "How I work",
+      "principles": [
+        { "title": "Decide when AI is the right call", "text": "Choose the architecture before the model: retrieval, agentic flows or a hybrid, with human-in-the-loop guardrails." },
+        { "title": "Treat evals as a product", "text": "Measure each part of the pipeline, such as speech, understanding and generation, so you know it is working." },
+        { "title": "Prototype before engineering scopes", "text": "Show a working demo first, so the build decision rests on something real." }
+      ],
+      "recognitionHeading": "Recognition",
+      "latestHeading": "Latest",
+      "nextHeading": "Connect",
+      "slots": [
+        { "id": "hero" },
+        { "id": "impact", "min": 3, "max": 4 },
+        { "id": "how", "min": 1, "max": 3 },
+        { "id": "work", "min": 2, "max": 3 },
+        { "id": "media", "min": 1, "max": 1 },
+        { "id": "recognition", "min": 3, "max": 3 },
+        { "id": "latest", "min": 1, "max": 1 },
+        { "id": "next" }
+      ]
     },
     "work": {
-      "title": "Work",
-      "description": "Case studies in shipping AI products: the brief, the proof, and the decisions behind them."
+      "title": "Projects",
+      "description": "Case studies in shipping AI products: the problem, the decisions and the results."
     },
     "builds": {
       "title": "Builds",
       "description": "Things I've prototyped and shipped myself to stay close to the materials.",
-      "moreLink": { "label": "More on GitHub", "href": "https://github.com/angadsingh1027-eng" }
+      "moreLink": { "label": "More on GitHub", "href": "https://github.com/angadsingh1027-eng" },
+      "caseStudyLabel": "Read the case study"
     },
     "writing": {
       "title": "Writing",
@@ -61,8 +81,8 @@
     }
   },
   "case": {
-    "briefHeading": "Leader Brief",
-    "proofHeading": "Proof",
+    "briefHeading": "In a nutshell",
+    "proofHeading": "See it in action",
     "kpiHeading": "Key results",
     "back": "All work"
   }

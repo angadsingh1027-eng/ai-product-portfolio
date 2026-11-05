@@ -1,0 +1,49 @@
+{
+  "slug": "jpmorganchase-agentic-pdlc",
+  "order": 2,
+  "title": "Agentic ways of working in the product life cycle",
+  "tagline": "Agentic quality checks for the product development life cycle",
+  "company": "JPMorganChase",
+  "year": "Jul 2026 – Present",
+  "role": "Vice President, Product Manager",
+  "domain": "Agentic AI for the product development life cycle",
+  "summary": "Leading the roadmap toward agentic ways of working across the product development life cycle, and owning a suite of quality checkers for briefs, PRDs and specs with standards and scoring that control owners configure.",
+  "status": "Live",
+  "depth": "snapshot",
+  "placement": "work",
+  "featured": true,
+  "chips": [
+    { "text": "Cycle time down X%", "masked": true },
+    { "text": "Failures down Y×", "masked": true },
+    { "text": "Time freed Z%", "masked": true }
+  ],
+  "brief": [
+    "Problem: TODO: the problem, in your words",
+    "Call: TODO: the call you made",
+    "Role: led the roadmap toward agentic ways of working and owned the suite of quality checkers.",
+    "Also: migrated a live controls quality checker from GPT-4o to GPT 5.2.",
+    "Result: TODO: a result sentence in words; the figures stay masked"
+  ],
+  "kpis": [
+    {
+      "label": "Discovery cycle time",
+      "value": "X%",
+      "how": "Down after configurable quality checkers for briefs, PRDs and specs",
+      "masked": true
+    },
+    {
+      "label": "Failures after the model migration",
+      "value": "Y×",
+      "how": "Fewer failures on a live controls quality checker",
+      "masked": true
+    },
+    {
+      "label": "PM time freed",
+      "value": "Z%",
+      "how": "On story management during execution",
+      "masked": true
+    }
+  ],
+  "proof": [],
+  "tags": ["agentic-ai", "controls", "spec-driven-development"]
+}

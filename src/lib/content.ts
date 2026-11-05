@@ -103,9 +103,14 @@ export const cases: CaseStudy[] = Object.entries(json)
 
 export const getCase = (slug: string) => cases.find((c) => c.slug === slug);
 
-// Home numbers come from KPIs flagged `featured` in the case files, so a metric is edited once.
-export const featuredKpis: Kpi[] = cases
-  .flatMap((c) => c.kpis.filter((k) => k.featured === true))
+// Home numbers come from KPIs flagged `featured` on cases and roles, so a metric is edited once.
+// They are ordered by `featuredOrder`. A masked KPI is never shown in the impact strip.
+export const featuredKpis: Kpi[] = [
+  ...cases.flatMap((c) => c.kpis),
+  ...journey.flatMap((j) => j.kpis ?? []),
+]
+  .filter((k) => k.featured === true && k.masked !== true)
+  .sort((a, b) => (a.featuredOrder ?? 99) - (b.featuredOrder ?? 99))
   .slice(0, 4);
 // The Home video is the proof item flagged `hero`, falling back to the first video.
 export const topVideo: Link | undefined =
