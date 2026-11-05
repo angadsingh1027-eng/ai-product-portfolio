@@ -16,7 +16,7 @@ function Journey() {
       <PageHeader title={p.title} description={p.description} />
       <ol className="space-y-10 border-l pl-6">
         {journey.map((j) => (
-          <TimelineEntry key={j.id} entry={j} />
+          <TimelineEntry key={j.id} entry={j} headingLevel="h2" />
         ))}
       </ol>
     </>

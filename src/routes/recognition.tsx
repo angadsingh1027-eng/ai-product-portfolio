@@ -20,6 +20,7 @@ function Recognition() {
           <li key={r.title}>
             <ContentCard
               variant="highlight"
+              headingLevel="h2"
               eyebrow={kinds[r.kind]}
               title={r.title}
               tagline={r.source}

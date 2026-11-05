@@ -214,6 +214,7 @@ export const homeSchema = z
 export const siteSchema = z
   .object({
     name: text,
+    url: z.string().url(),
     role: text,
     location: text,
     photo: z.object({ src: text, alt: text }).strict(),
