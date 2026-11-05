@@ -1,0 +1,69 @@
+{
+  "name": "Alex Morgan",
+  "role": "AI Product Manager",
+  "nav": [
+    { "label": "Work", "to": "/work" },
+    { "label": "Builds", "to": "/builds" },
+    { "label": "Writing", "to": "/writing" },
+    { "label": "Journey", "to": "/journey" },
+    { "label": "Proof", "to": "/proof" },
+    { "label": "Contact", "to": "/contact" }
+  ],
+  "footer": "Built with plain files and care.",
+  "pages": {
+    "home": {
+      "title": "Alex Morgan — AI Product Manager",
+      "description": "I turn messy AI capabilities into products people trust and use every day.",
+      "eyebrow": "AI Product Manager",
+      "headline": "I ship AI products that earn trust, not just demos.",
+      "intro": "Eight years shaping products across search, assistants and developer tools. I work at the seam between research, engineering and the people who actually use the thing.",
+      "primaryCta": { "label": "See the work", "to": "/work" },
+      "secondaryCta": { "label": "Get in touch", "to": "/contact" },
+      "featuredHeading": "Selected work"
+    },
+    "work": {
+      "title": "Work",
+      "description": "Case studies in shipping AI products — the brief, the proof, and the decisions behind them."
+    },
+    "builds": {
+      "title": "Builds",
+      "description": "Things I've prototyped and shipped myself to stay close to the materials."
+    },
+    "writing": {
+      "title": "Writing",
+      "description": "Notes on product judgement, evaluation and building with models."
+    },
+    "journey": {
+      "title": "Journey",
+      "description": "The roles, teams and lessons that got me here."
+    },
+    "proof": {
+      "title": "Proof",
+      "description": "Talks, press, references and numbers you can check."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Open to senior AI product roles and advisory work.",
+      "body": "The fastest way to reach me is email. I reply within two working days.",
+      "links": [
+        { "label": "Email", "value": "hello@example.com", "href": "mailto:hello@example.com" },
+        { "label": "LinkedIn", "value": "linkedin.com/in/example", "href": "https://linkedin.com" },
+        { "label": "GitHub", "value": "github.com/example", "href": "https://github.com" }
+      ]
+    }
+  },
+  "case": {
+    "briefHeading": "Leader Brief",
+    "proofHeading": "Proof",
+    "back": "All work"
+  },
+  "gate": {
+    "heading": "Depth",
+    "description": "Detailed metrics, internal decisions and artefacts. Enter the password shared with you.",
+    "placeholder": "Password",
+    "submit": "Unlock",
+    "loading": "Checking…",
+    "error": "That password didn't work.",
+    "unconfigured": "The unlock service isn't configured yet."
+  }
+}

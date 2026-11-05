@@ -1,0 +1,12 @@
+{
+  "metrics": [
+    { "value": "31%", "label": "Lower handle time" },
+    { "value": "18%", "label": "Search conversion lift" },
+    { "value": "1.2k", "label": "Daily active agents" }
+  ],
+  "links": [
+    { "type": "Talk", "title": "Evaluating copilots in production", "source": "AI Product Summit 2026", "href": "https://example.com" },
+    { "type": "Press", "title": "How Helpline built a copilot agents trust", "source": "Example Weekly", "href": "https://example.com" },
+    { "type": "Reference", "title": "\"The clearest product thinker I've worked with.\"", "source": "VP Engineering, Helpline", "href": "https://example.com" }
+  ]
+}

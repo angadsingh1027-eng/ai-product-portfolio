@@ -1,0 +1,5 @@
+[
+  { "id": "helpline", "role": "Senior AI Product Manager", "company": "Helpline Inc.", "period": "2024 — Now", "summary": "Lead PM for agent-assist and support automation.", "gated": true },
+  { "id": "shelfware", "role": "Product Manager, Search", "company": "Shelfware", "period": "2021 — 2024", "summary": "Owned search and discovery for a 20M-user marketplace.", "gated": true },
+  { "id": "studio", "role": "Associate Product Manager", "company": "Northlight Studio", "period": "2018 — 2021", "summary": "Shipped internal tools and learned to love customer interviews.", "gated": false }
+]
