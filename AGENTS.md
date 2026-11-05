@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- All user-facing copy lives in `/content` (JSON + markdown) loaded via `import.meta.glob` in `src/lib/content.ts`; never hardcode copy in components. Why: owner edits content without touching code.
+- Case studies are `content/work/<slug>.json` (meta, brief, proof) paired with `<slug>.md` (body). Why: structured fields without a frontmatter parser.
+- Depth gates POST `{id, password}` to `VITE_GATE_API_URL` and render returned `html`; backend lives elsewhere.

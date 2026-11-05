@@ -1,0 +1,19 @@
+{
+  "slug": "semantic-search",
+  "order": 2,
+  "title": "Semantic Search",
+  "company": "Shelfware",
+  "year": "2023",
+  "summary": "Rebuilt product search on embeddings, lifting search conversion 18%.",
+  "brief": [
+    "Problem: keyword search failed on 1 in 4 queries.",
+    "Bet: hybrid retrieval with a learned re-ranker.",
+    "Role: PM owner from discovery to global rollout.",
+    "Result: +18% search conversion, −42% zero-result queries.",
+    "Lesson: ship the boring fallback first."
+  ],
+  "proof": [
+    { "label": "Engineering blog", "href": "https://example.com" },
+    { "label": "A/B summary", "href": "https://example.com" }
+  ]
+}

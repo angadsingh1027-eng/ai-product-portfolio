@@ -11,6 +11,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { site } from "../lib/content";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -78,14 +79,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { title: site.pages.home.title },
+      { name: "description", content: site.pages.home.description },
+      { name: "author", content: site.name },
     ],
     links: [
       {
@@ -93,6 +89,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Geist:wght@400;500;600&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -121,7 +120,24 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="mx-auto flex min-h-screen max-w-3xl flex-col px-5 sm:px-8">
+        <header className="flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between sm:py-8">
+          <Link to="/" className="font-serif text-xl">{site.name}</Link>
+          <nav className="-mx-1 flex gap-4 overflow-x-auto px-1 text-sm">
+            {site.nav.map((n: { label: string; to: string }) => (
+              <Link key={n.to} to={n.to} className="whitespace-nowrap text-muted-foreground hover:text-foreground" activeProps={{ className: "text-primary" }}>
+                {n.label}
+              </Link>
+            ))}
+          </nav>
+        </header>
+        <main className="flex-1 py-6 sm:py-10">
+          <Outlet />
+        </main>
+        <footer className="border-t py-8 text-sm text-muted-foreground">
+          © {site.name} · {site.footer}
+        </footer>
+      </div>
     </QueryClientProvider>
   );
 }
