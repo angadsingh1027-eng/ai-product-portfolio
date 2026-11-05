@@ -11,11 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BuildsRouteImport } from './routes/builds'
-import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConnectRouteImport } from './routes/connect'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as JourneyRouteImport } from './routes/journey'
-import { Route as ProofRouteImport } from './routes/proof'
-import { Route as WritingRouteImport } from './routes/writing'
+import { Route as RecognitionRouteImport } from './routes/recognition'
 import { Route as WorkIndexRouteImport } from './routes/work.index'
 import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 
@@ -29,9 +28,9 @@ const BuildsRoute = BuildsRouteImport.update({
   path: '/builds',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
+const ConnectRoute = ConnectRouteImport.update({
+  id: '/connect',
+  path: '/connect',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -44,14 +43,9 @@ const JourneyRoute = JourneyRouteImport.update({
   path: '/journey',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProofRoute = ProofRouteImport.update({
-  id: '/proof',
-  path: '/proof',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const WritingRoute = WritingRouteImport.update({
-  id: '/writing',
-  path: '/writing',
+const RecognitionRoute = RecognitionRouteImport.update({
+  id: '/recognition',
+  path: '/recognition',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkIndexRoute = WorkIndexRouteImport.update({
@@ -68,22 +62,20 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/builds': typeof BuildsRoute
-  '/contact': typeof ContactRoute
+  '/connect': typeof ConnectRoute
   '/gallery': typeof GalleryRoute
   '/journey': typeof JourneyRoute
-  '/proof': typeof ProofRoute
-  '/writing': typeof WritingRoute
+  '/recognition': typeof RecognitionRoute
   '/work/$slug': typeof WorkSlugRoute
   '/work/': typeof WorkIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/builds': typeof BuildsRoute
-  '/contact': typeof ContactRoute
+  '/connect': typeof ConnectRoute
   '/gallery': typeof GalleryRoute
   '/journey': typeof JourneyRoute
-  '/proof': typeof ProofRoute
-  '/writing': typeof WritingRoute
+  '/recognition': typeof RecognitionRoute
   '/work/$slug': typeof WorkSlugRoute
   '/work': typeof WorkIndexRoute
 }
@@ -91,11 +83,10 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/builds': typeof BuildsRoute
-  '/contact': typeof ContactRoute
+  '/connect': typeof ConnectRoute
   '/gallery': typeof GalleryRoute
   '/journey': typeof JourneyRoute
-  '/proof': typeof ProofRoute
-  '/writing': typeof WritingRoute
+  '/recognition': typeof RecognitionRoute
   '/work/$slug': typeof WorkSlugRoute
   '/work/': typeof WorkIndexRoute
 }
@@ -104,33 +95,30 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/builds'
-    | '/contact'
+    | '/connect'
     | '/gallery'
     | '/journey'
-    | '/proof'
-    | '/writing'
+    | '/recognition'
     | '/work/$slug'
     | '/work/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/builds'
-    | '/contact'
+    | '/connect'
     | '/gallery'
     | '/journey'
-    | '/proof'
-    | '/writing'
+    | '/recognition'
     | '/work/$slug'
     | '/work'
   id:
     | '__root__'
     | '/'
     | '/builds'
-    | '/contact'
+    | '/connect'
     | '/gallery'
     | '/journey'
-    | '/proof'
-    | '/writing'
+    | '/recognition'
     | '/work/$slug'
     | '/work/'
   fileRoutesById: FileRoutesById
@@ -138,11 +126,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BuildsRoute: typeof BuildsRoute
-  ContactRoute: typeof ContactRoute
+  ConnectRoute: typeof ConnectRoute
   GalleryRoute: typeof GalleryRoute
   JourneyRoute: typeof JourneyRoute
-  ProofRoute: typeof ProofRoute
-  WritingRoute: typeof WritingRoute
+  RecognitionRoute: typeof RecognitionRoute
   WorkSlugRoute: typeof WorkSlugRoute
   WorkIndexRoute: typeof WorkIndexRoute
 }
@@ -163,11 +150,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuildsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
+    '/connect': {
+      id: '/connect'
+      path: '/connect'
+      fullPath: '/connect'
+      preLoaderRoute: typeof ConnectRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -184,18 +171,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JourneyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/proof': {
-      id: '/proof'
-      path: '/proof'
-      fullPath: '/proof'
-      preLoaderRoute: typeof ProofRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/writing': {
-      id: '/writing'
-      path: '/writing'
-      fullPath: '/writing'
-      preLoaderRoute: typeof WritingRouteImport
+    '/recognition': {
+      id: '/recognition'
+      path: '/recognition'
+      fullPath: '/recognition'
+      preLoaderRoute: typeof RecognitionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/work/': {
@@ -218,11 +198,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BuildsRoute: BuildsRoute,
-  ContactRoute: ContactRoute,
+  ConnectRoute: ConnectRoute,
   GalleryRoute: GalleryRoute,
   JourneyRoute: JourneyRoute,
-  ProofRoute: ProofRoute,
-  WritingRoute: WritingRoute,
+  RecognitionRoute: RecognitionRoute,
   WorkSlugRoute: WorkSlugRoute,
   WorkIndexRoute: WorkIndexRoute,
 }

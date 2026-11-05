@@ -23,7 +23,7 @@ Lovable manages: `vite.config.ts` (keep `@lovable.dev/vite-tanstack-config`; do 
 - `content/work/<slug>.json`: one case. Fields: `slug`, `order`, `title` (60 characters), `tagline` (110), `company`, `year`, `role`, `domain`, `summary` (280), `status`, `depth` (`full` or `snapshot`), `placement` (`work` or `builds`), `featured`, `chips` (up to 3, 24 characters each), `brief` (up to 5 lines: Problem, Call, Role, Result, Lesson), `kpis`, `proof`, `tags`.
 - `content/work/<slug>.md`: the body of a `full` case, with `## Context`, `## Users and pain points`, `## Solution`, `## What I owned`. A `snapshot` case has no body.
 - A KPI has `label`, `value` (18 characters), `how`, and optional `scope`, `featured`, `featuredOrder` and `masked`. A masked KPI or chip carries no digits: its value is one letter and an optional unit.
-- `content/journey.json`, `builds.json`, `proof.json`, `writing.json`: lists loaded by `src/lib/content.ts`. Writing is outside the MVP and is removed in PR 4.
+- `content/journey.json`, `builds.json`, `recognition.json`: lists loaded by `src/lib/content.ts`. Recognition items have a `kind` (award, credential or quote) from the taxonomy. There is no Writing page.
 
 ## Commands
 

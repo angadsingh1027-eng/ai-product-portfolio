@@ -4,15 +4,16 @@ import { MediaBlock } from "@/components/MediaBlock";
 import { NextStep } from "@/components/NextStep";
 import { Section } from "@/components/Section";
 import { StatTile } from "@/components/StatTile";
-import { builds, cases, featuredKpis, pageHead, proof, site, topVideo } from "@/lib/content";
+import { builds, cases, featuredKpis, pageHead, recognition, site, topVideo } from "@/lib/content";
 import { slotItems, type Principle, type SlotConfig } from "@/lib/home";
 
 const p = site.pages.home;
 const slots: SlotConfig[] = p.slots;
 const principles: Principle[] = p.principles;
 const masked: string = site.labels.masked;
+const kinds: Record<string, string> = site.labels.kinds;
 const featuredCases = cases.filter((c) => c.placement === "work" && c.featured);
-const contactLinks: { label: string; value: string; href: string }[] = site.pages.contact.links;
+const contactLinks: { label: string; value: string; href: string }[] = site.pages.connect.links;
 
 export const Route = createFileRoute("/")({
   head: () => pageHead(p.title, p.description),
@@ -122,7 +123,7 @@ function Slot({ cfg }: { cfg: SlotConfig }) {
       );
     }
     case "recognition": {
-      const items = slotItems(proof.links, cfg);
+      const items = slotItems(recognition, cfg);
       if (!items) return null;
       return (
         <Section heading={p.recognitionHeading} count={items.length}>
@@ -131,7 +132,7 @@ function Slot({ cfg }: { cfg: SlotConfig }) {
               <li key={l.title}>
                 <ContentCard
                   variant="highlight"
-                  eyebrow={l.type}
+                  eyebrow={kinds[l.kind]}
                   title={l.title}
                   tagline={l.source}
                   href={l.href}
@@ -163,7 +164,7 @@ function Slot({ cfg }: { cfg: SlotConfig }) {
     }
     case "next":
       return (
-        <NextStep heading={p.nextHeading} intro={site.pages.contact.body} items={contactLinks} />
+        <NextStep heading={p.nextHeading} intro={site.pages.connect.body} items={contactLinks} />
       );
     default:
       return null;

@@ -15,8 +15,8 @@ function Builds() {
     <>
       <PageHeader title={p.title} description={p.description} />
       <ul className="grid gap-4 sm:grid-cols-2">
-        {builds.map((b) => (
-          <li key={b.title} className="flex flex-col gap-2">
+        {builds.map((b, i) => (
+          <li key={b.title} className={`flex flex-col gap-2${i === 0 ? " sm:col-span-2" : ""}`}>
             <ContentCard
               variant="build"
               eyebrow={`${b.stack} · ${b.year}`}

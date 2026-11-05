@@ -15,7 +15,7 @@ A 0-to-1 agentic contact-center platform with AI automation and human-expert esc
 
 ## What I owned
 - **Roadmap:** vision, non-functional requirements (latency under 1s, 93%+ command accuracy) and phased releases, aligned across business and engineering.
-- **Prioritisation:** LLM clustering of 100K+ call transcripts into 69 contact reasons to size volume and rank automation ROI.
+- **Prioritization:** LLM clustering of 100K+ call transcripts into 69 contact reasons to size volume and rank automation ROI.
 - **Evaluation and fine-tuning:** GPT-4o vs Claude benchmark, GPT-4o fine-tuning, a custom evaluation framework adopted across the platform, and about 20% of evaluations automated with LLM-as-a-judge.
 - **Component-level evals:** ASR (WER, latency under 400ms) and NLU classifiers (95% on GPT-generated data, 83% on real transcripts, +2% with human-in-the-loop).
 - **Conversational flow design:** hybrid flows with hallucination guardrails, escalation triggers and multi-intent fallback.

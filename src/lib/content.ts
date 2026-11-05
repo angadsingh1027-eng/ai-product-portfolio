@@ -40,7 +40,7 @@ export type JourneyEntry = {
   summary?: string;
   kpis?: Kpi[];
 };
-export type ProofLink = { type: string; title: string; source: string; href?: string };
+export type Recognition = { kind: string; title: string; source: string; href?: string };
 export type Build = {
   title: string;
   year: string;
@@ -51,7 +51,6 @@ export type Build = {
   status: string;
   caseStudy?: string;
 };
-export type WritingPost = { title: string; date: string; excerpt: string; href: string };
 export type Taxonomy = Record<string, string[]>;
 
 const json = import.meta.glob<unknown>("/content/**/*.json", { eager: true, import: "default" });
@@ -82,9 +81,10 @@ export const site = load<any>("/content/site.json");
 /* eslint-enable @typescript-eslint/no-explicit-any */
 export const taxonomy = load<Taxonomy>("/content/taxonomy.json");
 export const builds = visible(load<Build[]>("/content/builds.json"));
-export const writing = visible(load<WritingPost[]>("/content/writing.json"));
 export const journey = visible(load<JourneyEntry[]>("/content/journey.json"));
-export const proof = { links: visible(load<{ links: ProofLink[] }>("/content/proof.json").links) };
+export const recognition = visible(
+  load<{ items: Recognition[] }>("/content/recognition.json").items,
+);
 
 export const cases: CaseStudy[] = Object.entries(json)
   .filter(([p]) => p.startsWith("/content/work/"))

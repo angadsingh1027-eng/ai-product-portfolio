@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { journey, pageHead, site, titled } from "@/lib/content";
 import { PageHeader } from "@/components/PageHeader";
+import { TimelineEntry } from "@/components/TimelineEntry";
+import { journey, pageHead, site, titled } from "@/lib/content";
 
 const p = site.pages.journey;
 
@@ -15,13 +16,7 @@ function Journey() {
       <PageHeader title={p.title} description={p.description} />
       <ol className="space-y-10 border-l pl-6">
         {journey.map((j) => (
-          <li key={j.id} className="relative">
-            <span className="absolute -left-[29px] top-2 size-2.5 rounded-full bg-primary" />
-            <p className="text-sm text-muted-foreground">{j.period}</p>
-            <h2 className="mt-1 font-serif text-2xl">{j.role}</h2>
-            <p className="text-sm font-medium">{j.company}</p>
-            {j.summary && <p className="mt-2 text-muted-foreground">{j.summary}</p>}
-          </li>
+          <TimelineEntry key={j.id} entry={j} />
         ))}
       </ol>
     </>

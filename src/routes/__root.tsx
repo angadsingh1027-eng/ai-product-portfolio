@@ -12,23 +12,27 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { site } from "../lib/content";
+import { visibleNav, type NavItem } from "../lib/nav";
+
+const nf = site.pages.notFound;
+const nav: NavItem[] = visibleNav(site.nav, {});
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h1 className="text-7xl font-bold text-foreground">{nf.code}</h1>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">{nf.title}</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          {nf.body}
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            {nf.cta}
           </Link>
         </div>
       </div>
@@ -124,7 +128,7 @@ function RootComponent() {
         <header className="flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between sm:py-8">
           <Link to="/" className="font-serif text-xl">{site.name}</Link>
           <nav className="-mx-1 flex gap-4 overflow-x-auto px-1 text-sm">
-            {site.nav.map((n: { label: string; to: string }) => (
+            {nav.map((n) => (
               <Link key={n.to} to={n.to} className="whitespace-nowrap text-muted-foreground hover:text-foreground" activeProps={{ className: "text-primary" }}>
                 {n.label}
               </Link>

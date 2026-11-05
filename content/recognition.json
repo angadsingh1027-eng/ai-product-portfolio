@@ -1,28 +1,28 @@
 {
-  "links": [
+  "items": [
     {
-      "type": "Award",
+      "kind": "award",
       "title": "Most market-ready idea",
       "source": "Maven AI PM Community Pitch Day, 2025 (Nexus Fleet Intelligence)",
       "href": "https://www.linkedin.com/posts/initmahesh_doing-the-things-that-dont-scale-and-pushing-ugcPost-7388702226375983104-b7m7/"
     },
     {
-      "type": "Award",
+      "kind": "award",
       "title": "Best Idea Spotting, Education vertical",
       "source": "Jagriti Yatra, 2025 (among 500+ changemakers)"
     },
     {
-      "type": "Award",
+      "kind": "award",
       "title": "Promoted for high performance",
       "source": "S&P Capital IQ, three consecutive review cycles (2013 to 2016)"
     },
     {
-      "type": "Award",
+      "kind": "award",
       "title": "Ace Award",
       "source": "TODO: confirm issuer and year"
     },
     {
-      "type": "Certification",
+      "kind": "credential",
       "title": "Agentic AI Product Management Certification",
       "source": "TODO: confirm issuer"
     }

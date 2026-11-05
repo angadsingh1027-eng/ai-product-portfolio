@@ -135,19 +135,23 @@ export function makeSchemas(t: Taxonomy) {
   return { caseSchema, journeySchema, buildsSchema };
 }
 
-export const writingSchema = z.array(
-  z.object({ title: text, date: text, excerpt: text, href: z.string().url() }).strict(),
-);
-
-export const proofSchema = z
-  .object({
-    links: z.array(
-      z
-        .object({ type: text, title: text, source: text, href: z.string().url().optional() })
-        .strict(),
-    ),
-  })
-  .strict();
+// Recognition: awards, credentials and quotes. `kind` is a highlightKind from the taxonomy.
+export function makeRecognitionSchema(t: Taxonomy) {
+  return z
+    .object({
+      items: z.array(
+        z
+          .object({
+            kind: oneOf(t.highlightKind),
+            title: text,
+            source: text,
+            href: z.string().url().optional(),
+          })
+          .strict(),
+      ),
+    })
+    .strict();
+}
 
 // The home page: its words, three principles, and its slots in order with their minimum and maximum.
 export const slotIds = [
@@ -223,7 +227,7 @@ export const siteSchema = z
         .strict(),
     ),
     footer: text,
-    labels: z.object({ masked: text }).strict(),
+    labels: z.object({ masked: text, kinds: z.record(text) }).strict(),
     pages: z.object({}).passthrough(),
     case: z.object({}).passthrough(),
   })

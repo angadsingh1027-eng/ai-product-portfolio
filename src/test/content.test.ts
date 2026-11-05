@@ -3,10 +3,9 @@ import { cases } from "@/lib/content";
 import {
   limits,
   makeSchemas,
-  proofSchema,
+  makeRecognitionSchema,
   siteSchema,
   taxonomySchema,
-  writingSchema,
 } from "@/lib/content-schema";
 
 const json = import.meta.glob<unknown>("/content/**/*.json", { eager: true, import: "default" });
@@ -18,6 +17,7 @@ const md = import.meta.glob<string>("/content/**/*.md", {
 
 const taxonomy = taxonomySchema.parse(json["/content/taxonomy.json"]);
 const { caseSchema, journeySchema, buildsSchema } = makeSchemas(taxonomy);
+const recognitionSchema = makeRecognitionSchema(taxonomy);
 
 const caseFiles = Object.keys(json).filter((p) => p.startsWith("/content/work/"));
 const sections = ["## Context", "## Users and pain points", "## Solution", "## What I owned"];
@@ -29,8 +29,7 @@ describe("content files", () => {
     expect(siteSchema.safeParse(json["/content/site.json"]).success).toBe(true);
     expect(journeySchema.safeParse(json["/content/journey.json"]).success).toBe(true);
     expect(buildsSchema.safeParse(json["/content/builds.json"]).success).toBe(true);
-    expect(writingSchema.safeParse(json["/content/writing.json"]).success).toBe(true);
-    expect(proofSchema.safeParse(json["/content/proof.json"]).success).toBe(true);
+    expect(recognitionSchema.safeParse(json["/content/recognition.json"]).success).toBe(true);
   });
 
   it("validates every case; a full case has a markdown body with the four sections", () => {
@@ -87,6 +86,14 @@ describe("content files", () => {
 });
 
 describe("content rules", () => {
+  it("rejects a recognition item outside the taxonomy", () => {
+    const item = { kind: "award", title: "T", source: "S" };
+    expect(recognitionSchema.safeParse({ items: [item] }).success).toBe(true);
+    expect(recognitionSchema.safeParse({ items: [{ ...item, kind: "badge" }] }).success).toBe(
+      false,
+    );
+  });
+
   it("rejects a missing required field and an unknown field", () => {
     const { title: _title, ...withoutTitle } = valid;
     expect(caseSchema.safeParse(withoutTitle).success).toBe(false);
