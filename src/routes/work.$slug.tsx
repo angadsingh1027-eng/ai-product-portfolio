@@ -1,6 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { getCase, pageHead, site, titled } from "@/lib/content";
-import { DepthGate } from "@/components/DepthGate";
 
 export const Route = createFileRoute("/work/$slug")({
   loader: ({ params }) => {
@@ -64,10 +63,6 @@ function CasePage() {
       )}
 
       <div className="prose-content mt-10" dangerouslySetInnerHTML={{ __html: c.html }} />
-
-      {c.hasPrivateDepth && (
-        <section className="mt-12"><DepthGate id={c.slug} /></section>
-      )}
     </article>
   );
 }

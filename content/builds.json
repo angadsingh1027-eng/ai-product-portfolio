@@ -4,13 +4,18 @@
     "year": "2025",
     "description": "A live AI agent that researches a company and its competitive landscape.",
     "stack": "AI agent · Vercel",
-    "href": "https://v0-competitor-analysis-tool-pi.vercel.app"
+    "href": "https://v0-competitor-analysis-tool-pi.vercel.app",
+    "kind": "shipped",
+    "status": "Live"
   },
   {
     "title": "Nexus Fleet Intelligence prototype",
     "year": "2025",
     "description": "Agentic load-bidding co-pilot for small fleets. Watch the 2:27 demo; the case study has the full story.",
     "stack": "Agentic AI · Prototype",
-    "href": "https://www.loom.com/share/3547048b91674d1db4d9d9e94f4a5b0a"
+    "href": "https://www.loom.com/share/3547048b91674d1db4d9d9e94f4a5b0a",
+    "kind": "shipped",
+    "status": "Demo",
+    "caseStudy": "nexus-fleet-intelligence"
   }
 ]

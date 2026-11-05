@@ -1,21 +1,35 @@
 import { marked } from "marked";
 
-export type Link = { label: string; href: string; type?: string };
-export type Kpi = { label: string; value: string; how: string; featured?: boolean };
+export type Link = { label: string; href: string; type?: string; hero?: boolean };
+export type Chip = { text: string; masked?: boolean };
+export type Kpi = {
+  label: string;
+  value: string;
+  how: string;
+  scope?: string;
+  masked?: boolean;
+  featured?: boolean;
+  featuredOrder?: number;
+};
 export type CaseMeta = {
   slug: string;
   order: number;
   title: string;
+  tagline: string;
   company: string;
   year: string;
   role: string;
   domain: string;
   summary: string;
+  status?: string;
+  depth: "full" | "snapshot";
+  placement: "work" | "builds";
+  featured: boolean;
+  chips: Chip[];
   brief: string[];
   kpis: Kpi[];
   proof: Link[];
   tags: string[];
-  hasPrivateDepth: boolean;
 };
 export type CaseStudy = CaseMeta & { html: string };
 export type JourneyEntry = {
@@ -24,14 +38,28 @@ export type JourneyEntry = {
   company: string;
   period: string;
   summary?: string;
-  gated?: boolean;
+  kpis?: Kpi[];
 };
 export type ProofLink = { type: string; title: string; source: string; href?: string };
-export type Build = { title: string; year: string; description: string; stack: string; href: string };
+export type Build = {
+  title: string;
+  year: string;
+  description: string;
+  stack: string;
+  href: string;
+  kind: string;
+  status: string;
+  caseStudy?: string;
+};
 export type WritingPost = { title: string; date: string; excerpt: string; href: string };
+export type Taxonomy = Record<string, string[]>;
 
 const json = import.meta.glob<unknown>("/content/**/*.json", { eager: true, import: "default" });
-const md = import.meta.glob<string>("/content/**/*.md", { eager: true, query: "?raw", import: "default" });
+const md = import.meta.glob<string>("/content/**/*.md", {
+  eager: true,
+  query: "?raw",
+  import: "default",
+});
 
 function load<T>(path: string): T {
   const v = json[path];
@@ -52,6 +80,7 @@ const visible = <T>(items: T[]): T[] => items.filter((item) => !hasTodo(item));
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export const site = load<any>("/content/site.json");
 /* eslint-enable @typescript-eslint/no-explicit-any */
+export const taxonomy = load<Taxonomy>("/content/taxonomy.json");
 export const builds = visible(load<Build[]>("/content/builds.json"));
 export const writing = visible(load<WritingPost[]>("/content/writing.json"));
 export const journey = visible(load<JourneyEntry[]>("/content/journey.json"));
@@ -74,9 +103,14 @@ export const cases: CaseStudy[] = Object.entries(json)
 
 export const getCase = (slug: string) => cases.find((c) => c.slug === slug);
 
-// Home and Proof numbers come from KPIs flagged `featured` in the case files, so a metric is edited once.
-export const featuredKpis: Kpi[] = cases.flatMap((c) => c.kpis.filter((k) => k.featured === true)).slice(0, 4);
-export const topVideo: Link | undefined = cases.flatMap((c) => c.proof).find((l) => l.type === "video");
+// Home numbers come from KPIs flagged `featured` in the case files, so a metric is edited once.
+export const featuredKpis: Kpi[] = cases
+  .flatMap((c) => c.kpis.filter((k) => k.featured === true))
+  .slice(0, 4);
+// The Home video is the proof item flagged `hero`, falling back to the first video.
+export const topVideo: Link | undefined =
+  cases.flatMap((c) => c.proof).find((l) => l.hero === true) ??
+  cases.flatMap((c) => c.proof).find((l) => l.type === "video");
 
 export const pageHead = (title: string, description: string) => ({
   meta: [

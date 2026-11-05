@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { journey, pageHead, site, titled } from "@/lib/content";
 import { PageHeader } from "@/components/PageHeader";
-import { DepthGate } from "@/components/DepthGate";
 
 const p = site.pages.journey;
 
@@ -22,7 +21,6 @@ function Journey() {
             <h2 className="mt-1 font-serif text-2xl">{j.role}</h2>
             <p className="text-sm font-medium">{j.company}</p>
             {j.summary && <p className="mt-2 text-muted-foreground">{j.summary}</p>}
-            {j.gated && <DepthGate id={j.id} />}
           </li>
         ))}
       </ol>

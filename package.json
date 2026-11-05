@@ -12,8 +12,7 @@
     "format": "prettier --write .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "content:validate": "vitest run src/test/content.test.ts",
-    "gate:mock": "node scripts/mock-gate.mjs"
+    "content:validate": "vitest run src/test/content.test.ts"
   },
   "overrides": {
     "rolldown": "1.2.1"
