@@ -28,7 +28,7 @@
     { "label": "MVP launch", "value": "30% faster", "how": "Assumption-first prioritization and lean validation cycles" }
   ],
   "proof": [
-    { "type": "video", "label": "Elena suite: voice assistant demo (Zeta)", "href": "https://youtu.be/uLPtvBbHPDA", "hero": true },
+    { "type": "video", "label": "Voice Pay Assistant (Zeta)", "href": "https://youtu.be/uLPtvBbHPDA", "hero": true },
     { "type": "pdf", "label": "Elena whitepaper (Zeta): architecture, guardrails and adoption framework", "href": "https://www.zeta.tech/us/resources/insights/whitepapers/elena-next-gen-conversational-ai-for-card-support-and-assistance/" }
   ],
   "tags": ["agentic-ai", "llm-evals", "rag", "voice-ai", "platform"]

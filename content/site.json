@@ -29,7 +29,6 @@
       "to": "/connect"
     }
   ],
-  "footer": "Built with plain files and care.",
   "labels": {
     "masked": "Figure withheld",
     "kinds": {
@@ -142,17 +141,20 @@
         {
           "label": "Email",
           "value": "angadsingh.1027@gmail.com",
-          "href": "mailto:angadsingh.1027@gmail.com"
+          "href": "mailto:angadsingh.1027@gmail.com",
+          "icon": "mail"
         },
         {
           "label": "LinkedIn",
           "value": "linkedin.com/in/angadsingh27",
-          "href": "https://www.linkedin.com/in/angadsingh27"
+          "href": "https://www.linkedin.com/in/angadsingh27",
+          "icon": "linkedin"
         },
         {
           "label": "GitHub",
           "value": "github.com/angadsingh1027-eng",
-          "href": "https://github.com/angadsingh1027-eng"
+          "href": "https://github.com/angadsingh1027-eng",
+          "icon": "github"
         }
       ],
       "heading": "Reach me"

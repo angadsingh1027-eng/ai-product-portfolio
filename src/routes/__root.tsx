@@ -24,9 +24,7 @@ function NotFoundComponent() {
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">{nf.code}</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">{nf.title}</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {nf.body}
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">{nf.body}</p>
         <div className="mt-6">
           <Link
             to="/"
@@ -95,7 +93,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Geist:wght@400;500;600&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Geist:wght@400;500;600&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -126,10 +127,17 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <div className="mx-auto flex min-h-screen max-w-3xl flex-col px-5 sm:px-8">
         <header className="flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between sm:py-8">
-          <Link to="/" className="font-serif text-xl">{site.name}</Link>
+          <Link to="/" className="font-serif text-xl">
+            {site.name}
+          </Link>
           <nav className="-mx-1 flex gap-4 overflow-x-auto px-1 text-sm">
             {nav.map((n) => (
-              <Link key={n.to} to={n.to} className="whitespace-nowrap text-muted-foreground hover:text-foreground" activeProps={{ className: "text-primary" }}>
+              <Link
+                key={n.to}
+                to={n.to}
+                className="whitespace-nowrap text-muted-foreground hover:text-foreground"
+                activeProps={{ className: "text-primary" }}
+              >
                 {n.label}
               </Link>
             ))}
@@ -139,7 +147,8 @@ function RootComponent() {
           <Outlet />
         </main>
         <footer className="border-t py-8 text-sm text-muted-foreground">
-          © {site.name} · {site.footer}
+          © {site.name}
+          {site.footer ? ` · ${site.footer}` : null}
         </footer>
       </div>
     </QueryClientProvider>

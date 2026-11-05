@@ -1,4 +1,20 @@
-type Item = { label: string; value?: string | undefined; href?: string | undefined };
+import { Calendar, FileText, Github, Link as LinkIcon, Linkedin, Mail } from "lucide-react";
+
+type Item = {
+  label: string;
+  value?: string | undefined;
+  href?: string | undefined;
+  // A name from the content file; an unknown name falls back to a plain link icon.
+  icon?: string | undefined;
+};
+
+const icons = {
+  mail: Mail,
+  linkedin: Linkedin,
+  github: Github,
+  resume: FileText,
+  calendar: Calendar,
+};
 
 type Props = {
   heading: string;
@@ -15,20 +31,24 @@ export function NextStep({ heading, intro, items }: Props) {
     <section className="mt-12">
       <h2 className="mb-4 text-sm font-medium text-muted-foreground">{heading}</h2>
       {intro ? <p className="mb-4 max-w-xl text-lg">{intro}</p> : null}
-      <ul className="divide-y border-y">
-        {shown.map((i) => (
-          <li key={i.label}>
-            <a
-              href={i.href}
-              target="_blank"
-              rel="noreferrer"
-              className="group flex justify-between gap-4 py-4"
-            >
-              <span className="text-muted-foreground">{i.label}</span>
-              <span className="truncate group-hover:text-primary">{i.value}</span>
-            </a>
-          </li>
-        ))}
+      <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+        {shown.map((i) => {
+          const Icon = icons[i.icon as keyof typeof icons] ?? LinkIcon;
+          return (
+            <li key={i.label}>
+              <a
+                href={i.href}
+                title={i.value}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center gap-3 rounded-lg border px-4 py-3 text-primary hover:border-primary"
+              >
+                <Icon aria-hidden="true" className="size-5 shrink-0" />
+                <span className="underline-offset-4 group-hover:underline">{i.label}</span>
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
