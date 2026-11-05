@@ -19,6 +19,7 @@ function Builds() {
           <li key={b.title} className={`flex flex-col gap-2${i === 0 ? " sm:col-span-2" : ""}`}>
             <ContentCard
               variant="build"
+              headingLevel="h2"
               eyebrow={`${b.stack} · ${b.year}`}
               title={b.title}
               tagline={b.description}

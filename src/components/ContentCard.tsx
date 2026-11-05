@@ -16,6 +16,8 @@ type Props = {
   href?: string | undefined;
   caseSlug?: string | undefined;
   maskedLabel?: string | undefined;
+  // h3 inside a page section; h2 when the card sits directly under the page title.
+  headingLevel?: "h2" | "h3" | undefined;
 };
 
 const titleSize: Record<CardVariant, string> = {
@@ -38,7 +40,9 @@ export function ContentCard({
   href,
   caseSlug,
   maskedLabel,
+  headingLevel = "h3",
 }: Props) {
+  const Heading = headingLevel;
   const body = (
     <>
       {eyebrow || status ? (
@@ -47,9 +51,9 @@ export function ContentCard({
           <span>{status}</span>
         </div>
       ) : null}
-      <h3 className={cn("mt-2 font-serif group-hover:text-primary", titleSize[variant])}>
+      <Heading className={cn("mt-2 font-serif group-hover:text-primary", titleSize[variant])}>
         {title}
-      </h3>
+      </Heading>
       {tagline ? <p className="mt-2 text-muted-foreground">{tagline}</p> : null}
       {chips && chips.length > 0 ? (
         <ul className="mt-4 flex flex-wrap gap-2">

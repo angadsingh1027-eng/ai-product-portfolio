@@ -22,6 +22,7 @@ function Work() {
           <li key={c.slug}>
             <ContentCard
               variant="case"
+              headingLevel="h2"
               eyebrow={`${c.company} · ${c.year}`}
               title={c.title}
               tagline={c.tagline}
