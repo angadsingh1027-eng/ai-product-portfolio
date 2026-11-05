@@ -18,7 +18,7 @@ Lovable manages: `vite.config.ts` (keep `@lovable.dev/vite-tanstack-config`; do 
 
 ## Content format
 
-- `content/site.json`: name, nav, page titles and descriptions, every UI string.
+- `content/site.json`: name, nav, page titles and descriptions, every UI string. `pages.home.slots` sets the home slots in order, each with a `min` and `max`; a slot with fewer items than its `min` hides itself.
 - `content/taxonomy.json`: allowed values for status, build kind, depth, placement, highlight kind and tags.
 - `content/work/<slug>.json`: one case. Fields: `slug`, `order`, `title` (60 characters), `tagline` (110), `company`, `year`, `role`, `domain`, `summary` (280), `status`, `depth` (`full` or `snapshot`), `placement` (`work` or `builds`), `featured`, `chips` (up to 3, 24 characters each), `brief` (up to 5 lines: Problem, Call, Role, Result, Lesson), `kpis`, `proof`, `tags`.
 - `content/work/<slug>.md`: the body of a `full` case, with `## Context`, `## Users and pain points`, `## Solution`, `## What I owned`. A `snapshot` case has no body.

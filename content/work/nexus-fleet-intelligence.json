@@ -21,7 +21,7 @@
     "Lesson: TODO: one-line lesson from Angad"
   ],
   "kpis": [
-    { "label": "Load bid decision time", "value": "10 min to seconds", "how": "Agentic co-pilot consolidates 8+ variables into ranked, profit-first recommendations", "featured": true },
+    { "label": "Load bid decision time", "value": "10 min to seconds", "how": "Agentic co-pilot consolidates 8+ variables into ranked, profit-first recommendations" },
     { "label": "Market opportunity identified", "value": "$500M+ ARR", "how": "TAM $1.3B-$3.5B (small fleets), $641M-$1.5B (micro-fleets), US and Canada", "scope": "estimated" },
     { "label": "Prototype delivery", "value": "3 weeks", "how": "Lean agentic AI build from discovery to working demo" },
     { "label": "Empty miles addressed", "value": "16.7% of miles", "how": "Backhaul finder targets deadhead reduction", "scope": "estimated" }

@@ -22,8 +22,7 @@ const { caseSchema, journeySchema, buildsSchema } = makeSchemas(taxonomy);
 const caseFiles = Object.keys(json).filter((p) => p.startsWith("/content/work/"));
 const sections = ["## Context", "## Users and pain points", "## Solution", "## What I owned"];
 
-const first = caseFiles[0] as string;
-const valid = json[first] as Record<string, unknown>;
+const valid = json["/content/work/zeta-agentic-platform.json"] as Record<string, unknown>;
 
 describe("content files", () => {
   it("validates the top-level files", () => {
@@ -59,13 +58,20 @@ describe("content files", () => {
       if (b.caseStudy !== undefined) expect(slugs.has(b.caseStudy)).toBe(true);
   });
 
-  it("flags between 1 and 4 featured KPIs for the home page", () => {
-    const featured = caseFiles.flatMap((file) => {
+  it("flags 3 or 4 featured KPIs for the impact strip, each with its own order", () => {
+    const fromCases = caseFiles.flatMap((file) => {
       const parsed = caseSchema.safeParse(json[file]);
-      return parsed.success ? parsed.data.kpis.filter((k) => k.featured === true) : [];
+      return parsed.success ? parsed.data.kpis : [];
     });
-    expect(featured.length).toBeGreaterThan(0);
+    const fromRoles = journeySchema
+      .parse(json["/content/journey.json"])
+      .flatMap((j) => j.kpis ?? []);
+    const featured = [...fromCases, ...fromRoles].filter((k) => k.featured === true);
+    expect(featured.length).toBeGreaterThanOrEqual(3);
     expect(featured.length).toBeLessThanOrEqual(4);
+    const orders = featured.map((k) => k.featuredOrder);
+    expect(orders.every((o) => o !== undefined)).toBe(true);
+    expect(new Set(orders).size).toBe(orders.length);
   });
 
   it("keeps private files out of /content", () => {

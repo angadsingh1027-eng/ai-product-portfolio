@@ -149,6 +149,64 @@ export const proofSchema = z
   })
   .strict();
 
+// The home page: its words, three principles, and its slots in order with their minimum and maximum.
+export const slotIds = [
+  "hero",
+  "impact",
+  "how",
+  "work",
+  "media",
+  "recognition",
+  "latest",
+  "next",
+] as const;
+
+export const homeSchema = z
+  .object({
+    title: text,
+    description: text,
+    eyebrow: text,
+    headline: text,
+    intro: text,
+    primaryCta: z.object({ label: text, to: text }).strict(),
+    secondaryCta: z.object({ label: text, to: text }).strict(),
+    statsHeading: text,
+    featuredHeading: text,
+    videoHeading: text,
+    principlesHeading: text,
+    principles: z
+      .array(z.object({ title: text.max(limits.title), text: text.max(limits.summary) }).strict())
+      .max(3),
+    recognitionHeading: text,
+    latestHeading: text,
+    nextHeading: text,
+    slots: z
+      .array(
+        z
+          .object({
+            id: z.enum(slotIds),
+            min: z.number().int().min(0).optional(),
+            max: z.number().int().min(1).optional(),
+          })
+          .strict(),
+      )
+      .superRefine((slots, ctx) => {
+        const ids = slots.map((s) => s.id);
+        if (new Set(ids).size !== ids.length) {
+          ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Each slot appears once" });
+        }
+        for (const required of ["hero", "next"] as const) {
+          if (!ids.includes(required)) {
+            ctx.addIssue({
+              code: z.ZodIssueCode.custom,
+              message: `The ${required} slot is required`,
+            });
+          }
+        }
+      }),
+  })
+  .strict();
+
 export const siteSchema = z
   .object({
     name: text,

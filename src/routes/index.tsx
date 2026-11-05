@@ -1,78 +1,181 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { cases, featuredKpis, pageHead, site, topVideo } from "@/lib/content";
+import { ContentCard } from "@/components/ContentCard";
+import { MediaBlock } from "@/components/MediaBlock";
+import { NextStep } from "@/components/NextStep";
+import { Section } from "@/components/Section";
+import { StatTile } from "@/components/StatTile";
+import { builds, cases, featuredKpis, pageHead, proof, site, topVideo } from "@/lib/content";
+import { slotItems, type Principle, type SlotConfig } from "@/lib/home";
 
 const p = site.pages.home;
+const slots: SlotConfig[] = p.slots;
+const principles: Principle[] = p.principles;
+const masked: string = site.labels.masked;
+const featuredCases = cases.filter((c) => c.placement === "work" && c.featured);
+const contactLinks: { label: string; value: string; href: string }[] = site.pages.contact.links;
 
 export const Route = createFileRoute("/")({
   head: () => pageHead(p.title, p.description),
   component: Index,
 });
 
-function Index() {
+function Hero() {
   return (
-    <>
-      <section className="py-8 sm:py-16">
-        {site.photo && (
-          <img src={site.photo.src} alt={site.photo.alt} width={96} height={96} className="mb-6 size-24 rounded-full object-cover" />
-        )}
-        <p className="text-sm font-medium text-primary">{p.eyebrow}</p>
-        <h1 className="mt-4 max-w-2xl font-serif text-4xl leading-tight sm:text-6xl">{p.headline}</h1>
-        <p className="mt-6 max-w-xl text-lg text-muted-foreground">{p.intro}</p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link to={p.primaryCta.to} className="rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90">{p.primaryCta.label}</Link>
-          <Link to={p.secondaryCta.to} className="rounded-md border px-5 py-2.5 text-sm font-medium hover:border-foreground">{p.secondaryCta.label}</Link>
-        </div>
-      </section>
+    <section className="py-8 sm:py-16">
+      {site.photo && (
+        <img
+          src={site.photo.src}
+          alt={site.photo.alt}
+          width={96}
+          height={96}
+          className="mb-6 size-24 rounded-full object-cover"
+        />
+      )}
+      <p className="text-sm font-medium text-primary">{p.eyebrow}</p>
+      <h1 className="mt-4 max-w-2xl font-serif text-4xl leading-tight sm:text-6xl">{p.headline}</h1>
+      <p className="mt-6 max-w-xl text-lg text-muted-foreground">{p.intro}</p>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <Link
+          to={p.primaryCta.to}
+          className="rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90"
+        >
+          {p.primaryCta.label}
+        </Link>
+        <Link
+          to={p.secondaryCta.to}
+          className="rounded-md border px-5 py-2.5 text-sm font-medium hover:border-foreground"
+        >
+          {p.secondaryCta.label}
+        </Link>
+      </div>
+    </section>
+  );
+}
 
-      {featuredKpis.length > 0 && (
-        <section className="mt-12">
-          <h2 className="mb-4 text-sm font-medium text-muted-foreground">{p.statsHeading}</h2>
-          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {featuredKpis.map((k) => (
-              <li key={k.label} className="rounded-lg border p-4">
-                <p className="break-words font-serif text-2xl text-primary sm:text-3xl">{k.value}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{k.label}</p>
+// One home slot. A slot with fewer items than its minimum renders nothing.
+function Slot({ cfg }: { cfg: SlotConfig }) {
+  switch (cfg.id) {
+    case "hero":
+      return <Hero />;
+    case "impact": {
+      const items = slotItems(featuredKpis, cfg);
+      if (!items) return null;
+      return (
+        <Section heading={p.statsHeading} count={items.length}>
+          <ul className="grid gap-3 sm:grid-cols-3">
+            {items.map((k) => (
+              <StatTile key={k.label} kpi={k} maskedLabel={masked} />
+            ))}
+          </ul>
+        </Section>
+      );
+    }
+    case "how": {
+      const items = slotItems(principles, cfg);
+      if (!items) return null;
+      return (
+        <Section heading={p.principlesHeading} count={items.length}>
+          <ul className="grid gap-6 sm:grid-cols-3">
+            {items.map((x) => (
+              <li key={x.title}>
+                <h3 className="font-serif text-xl">{x.title}</h3>
+                <p className="mt-2 text-muted-foreground">{x.text}</p>
               </li>
             ))}
           </ul>
-        </section>
-      )}
-
-      <section className="mt-12">
-        <h2 className="mb-4 text-sm font-medium text-muted-foreground">{p.featuredHeading}</h2>
-        <ul className="divide-y border-y">
-          {cases.slice(0, 2).map((c) => (
-            <li key={c.slug}>
-              <Link to="/work/$slug" params={{ slug: c.slug }} className="group block py-5">
-                <div className="flex items-baseline justify-between gap-4">
-                  <span className="font-serif text-2xl group-hover:text-primary">{c.title}</span>
-                  <span className="shrink-0 text-sm text-muted-foreground">{c.year}</span>
-                </div>
-                <p className="mt-1 text-muted-foreground">{c.summary}</p>
-              </Link>
-            </li>
+        </Section>
+      );
+    }
+    case "work": {
+      const items = slotItems(featuredCases, cfg);
+      if (!items) return null;
+      return (
+        <Section heading={p.featuredHeading} count={items.length}>
+          <ul className="grid gap-4">
+            {items.map((c) => (
+              <li key={c.slug}>
+                <ContentCard
+                  variant="case"
+                  eyebrow={`${c.company} · ${c.year}`}
+                  title={c.title}
+                  tagline={c.tagline}
+                  status={c.status}
+                  chips={c.chips}
+                  caseSlug={c.depth === "full" ? c.slug : undefined}
+                  maskedLabel={masked}
+                />
+              </li>
+            ))}
+          </ul>
+        </Section>
+      );
+    }
+    case "media": {
+      const items = slotItems(topVideo ? [topVideo] : [], cfg);
+      if (!items) return null;
+      return (
+        <Section heading={p.videoHeading} count={items.length}>
+          {items.map((v) => (
+            <MediaBlock key={v.href} href={v.href} label={v.label} />
           ))}
-        </ul>
-      </section>
-
-      {topVideo && (
-        <section className="mt-12">
-          <h2 className="mb-4 text-sm font-medium text-muted-foreground">{p.videoHeading}</h2>
-          <a href={topVideo.href} target="_blank" rel="noreferrer" className="inline-block rounded-full border px-4 py-2 text-sm hover:border-primary hover:text-primary">
-            {topVideo.label} ↗
-          </a>
-        </section>
-      )}
-
-      <section className="mt-12">
-        <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-          {site.pages.contact.links.map((l: { label: string; href: string }) => (
-            <li key={l.label}>
-              <a href={l.href} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary">{l.label} ↗</a>
-            </li>
+        </Section>
+      );
+    }
+    case "recognition": {
+      const items = slotItems(proof.links, cfg);
+      if (!items) return null;
+      return (
+        <Section heading={p.recognitionHeading} count={items.length}>
+          <ul className="grid gap-4 sm:grid-cols-3">
+            {items.map((l) => (
+              <li key={l.title}>
+                <ContentCard
+                  variant="highlight"
+                  eyebrow={l.type}
+                  title={l.title}
+                  tagline={l.source}
+                  href={l.href}
+                />
+              </li>
+            ))}
+          </ul>
+        </Section>
+      );
+    }
+    case "latest": {
+      const items = slotItems(builds, cfg);
+      if (!items) return null;
+      return (
+        <Section heading={p.latestHeading} count={items.length}>
+          {items.map((b) => (
+            <ContentCard
+              key={b.title}
+              variant="build"
+              eyebrow={`${b.stack} · ${b.year}`}
+              title={b.title}
+              tagline={b.description}
+              status={b.status}
+              href={b.href}
+            />
           ))}
-        </ul>
-      </section>
+        </Section>
+      );
+    }
+    case "next":
+      return (
+        <NextStep heading={p.nextHeading} intro={site.pages.contact.body} items={contactLinks} />
+      );
+    default:
+      return null;
+  }
+}
+
+function Index() {
+  return (
+    <>
+      {slots.map((cfg) => (
+        <Slot key={cfg.id} cfg={cfg} />
+      ))}
     </>
   );
 }
