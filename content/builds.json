@@ -1,5 +1,16 @@
 [
-  { "title": "Eval Notebook", "year": "2026", "description": "A tiny tool for side-by-side prompt comparisons with human grading.", "stack": "TypeScript · LLM APIs", "href": "https://github.com" },
-  { "title": "Meeting Distiller", "year": "2025", "description": "Turns call transcripts into decisions, owners and open questions.", "stack": "Python · Whisper", "href": "https://github.com" },
-  { "title": "Spec Linter", "year": "2024", "description": "Flags vague requirements in product specs before engineering sees them.", "stack": "Node · Embeddings", "href": "https://github.com" }
+  {
+    "title": "Company and competitive landscape research agent",
+    "year": "2025",
+    "description": "A live AI agent that researches a company and its competitive landscape.",
+    "stack": "AI agent · Vercel",
+    "href": "https://v0-competitor-analysis-tool-pi.vercel.app"
+  },
+  {
+    "title": "Nexus Fleet Intelligence prototype",
+    "year": "2025",
+    "description": "Agentic load-bidding co-pilot for small fleets. Watch the 2:27 demo; the case study has the full story.",
+    "stack": "Agentic AI · Prototype",
+    "href": "https://www.loom.com/share/3547048b91674d1db4d9d9e94f4a5b0a"
+  }
 ]
