@@ -10,7 +10,7 @@ export function DepthGate({ id }: { id: string }) {
 
   async function submit(e: FormEvent) {
     e.preventDefault();
-    const url = import.meta.env.VITE_GATE_API_URL as string | undefined;
+    const url = import.meta.env["VITE_GATE_API_URL"] as string | undefined;
     if (!url) {
       setState("error");
       setMsg(g.unconfigured);
