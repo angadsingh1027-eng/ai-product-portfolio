@@ -66,8 +66,8 @@
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.2 0.01 60);
+  --background: oklch(0.985 0.006 80);
+  --foreground: oklch(0.22 0.012 60);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.2 0.01 60);
   --popover: oklch(1 0 0);
@@ -82,7 +82,7 @@
   --accent-foreground: oklch(0.2 0.01 60);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.92 0.004 70);
+  --border: oklch(0.91 0.01 75);
   --input: oklch(0.92 0.004 70);
   --ring: oklch(0.56 0.18 38);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -147,8 +147,16 @@
 }
 
 @layer base {
-  body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
-  h1, h2, h3 { font-weight: 400; letter-spacing: -0.01em; }
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
 }
 
 /* Foundations: a visible keyboard focus ring and no motion for visitors who ask for none. */
@@ -172,10 +180,29 @@
 
 @utility prose-content {
   line-height: 1.75;
-  & h2 { font-family: var(--font-serif); font-size: 1.75rem; margin: 2.5rem 0 0.75rem; }
-  & h3 { font-weight: 600; margin: 2rem 0 0.5rem; }
-  & p { margin: 0 0 1rem; }
-  & ul { list-style: disc; padding-left: 1.25rem; margin: 0 0 1rem; }
-  & li { margin: 0.25rem 0; }
-  & a { color: var(--primary); text-decoration: underline; }
+  max-width: 68ch;
+  & h2 {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    margin: 2.5rem 0 0.75rem;
+  }
+  & h3 {
+    font-weight: 600;
+    margin: 2rem 0 0.5rem;
+  }
+  & p {
+    margin: 0 0 1rem;
+  }
+  & ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin: 0 0 1rem;
+  }
+  & li {
+    margin: 0.25rem 0;
+  }
+  & a {
+    color: var(--primary);
+    text-decoration: underline;
+  }
 }
