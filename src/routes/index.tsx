@@ -22,32 +22,36 @@ export const Route = createFileRoute("/")({
 
 function Hero() {
   return (
-    <section className="py-8 sm:py-16">
+    <section className="grid items-center gap-6 py-8 sm:grid-cols-[1fr_13rem] sm:gap-10 sm:py-16">
       {site.photo && (
         <img
           src={site.photo.src}
           alt={site.photo.alt}
-          width={96}
-          height={96}
-          className="mb-6 size-24 rounded-full object-cover object-top"
+          width={208}
+          height={260}
+          className="size-28 rounded-full object-cover object-top sm:order-2 sm:h-65 sm:w-52 sm:rounded-2xl"
         />
       )}
-      <p className="text-sm font-medium text-primary">{p.eyebrow}</p>
-      <h1 className="mt-4 max-w-2xl font-serif text-4xl leading-tight sm:text-6xl">{p.headline}</h1>
-      <p className="mt-6 max-w-xl text-lg text-muted-foreground">{p.intro}</p>
-      <div className="mt-8 flex flex-wrap gap-3">
-        <Link
-          to={p.primaryCta.to}
-          className="rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90"
-        >
-          {p.primaryCta.label}
-        </Link>
-        <Link
-          to={p.secondaryCta.to}
-          className="rounded-md border px-5 py-2.5 text-sm font-medium hover:border-foreground"
-        >
-          {p.secondaryCta.label}
-        </Link>
+      <div>
+        <p className="text-sm font-medium text-primary">{p.eyebrow}</p>
+        <h1 className="mt-4 max-w-2xl font-serif text-4xl leading-tight sm:text-5xl">
+          {p.headline}
+        </h1>
+        <p className="mt-6 max-w-xl text-lg text-muted-foreground">{p.intro}</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link
+            to={p.primaryCta.to}
+            className="rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90"
+          >
+            {p.primaryCta.label}
+          </Link>
+          <Link
+            to={p.secondaryCta.to}
+            className="rounded-md border px-5 py-2.5 text-sm font-medium hover:border-foreground"
+          >
+            {p.secondaryCta.label}
+          </Link>
+        </div>
       </div>
     </section>
   );
