@@ -125,12 +125,12 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <div className="mx-auto flex min-h-screen max-w-3xl flex-col px-5 sm:px-8">
+      <div className="mx-auto flex min-h-screen max-w-5xl flex-col px-5 sm:px-8">
         <header className="flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between sm:py-8">
           <Link to="/" className="font-serif text-xl">
             {site.name}
           </Link>
-          <nav className="-mx-1 flex gap-4 overflow-x-auto px-1 text-sm">
+          <nav className="flex flex-wrap gap-x-5 gap-y-1 text-sm sm:text-base">
             {nav.map((n) => (
               <Link
                 key={n.to}
