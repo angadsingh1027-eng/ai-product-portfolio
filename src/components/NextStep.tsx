@@ -28,9 +28,9 @@ export function NextStep({ heading, intro, items }: Props) {
   const shown = items.filter((i) => i.value && i.href);
   if (shown.length === 0) return null;
   return (
-    <section className="mt-12">
-      <h2 className="mb-4 text-sm font-medium text-muted-foreground">{heading}</h2>
-      {intro ? <p className="mb-4 max-w-xl text-lg">{intro}</p> : null}
+    <section className="mt-16 sm:mt-24">
+      <h2 className="mb-6 font-serif text-3xl">{heading}</h2>
+      {intro ? <p className="mb-6 max-w-xl text-lg">{intro}</p> : null}
       <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         {shown.map((i) => {
           const Icon = icons[i.icon as keyof typeof icons] ?? LinkIcon;
@@ -41,7 +41,7 @@ export function NextStep({ heading, intro, items }: Props) {
                 title={i.value}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-center gap-3 rounded-lg border px-4 py-3 text-primary hover:border-primary"
+                className="group flex items-center gap-3 rounded-lg border bg-card px-4 py-3 text-primary hover:border-primary"
               >
                 <Icon aria-hidden="true" className="size-5 shrink-0" />
                 <span className="underline-offset-4 group-hover:underline">{i.label}</span>
