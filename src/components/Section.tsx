@@ -13,9 +13,9 @@ type Props = {
 export function Section({ heading, intro, count, min = 1, children }: Props) {
   if (count < min) return null;
   return (
-    <section className="mt-12">
-      <h2 className="mb-4 text-sm font-medium text-muted-foreground">{heading}</h2>
-      {intro ? <p className="mb-4 max-w-xl text-muted-foreground">{intro}</p> : null}
+    <section className="mt-16 sm:mt-24">
+      <h2 className="mb-6 font-serif text-3xl">{heading}</h2>
+      {intro ? <p className="mb-6 max-w-xl text-foreground">{intro}</p> : null}
       {children}
     </section>
   );

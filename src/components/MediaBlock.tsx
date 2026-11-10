@@ -13,7 +13,7 @@ export function MediaBlock({ href, label, poster, posterAlt, duration }: Props) 
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="group flex items-center gap-4 rounded-lg border p-4 hover:border-primary"
+      className="group flex items-center gap-4 rounded-lg border bg-card p-4 hover:border-primary"
     >
       {poster ? (
         <img

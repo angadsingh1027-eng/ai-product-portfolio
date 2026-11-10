@@ -26,7 +26,7 @@ const titleSize: Record<CardVariant, string> = {
   highlight: "text-xl",
 };
 
-const frame = "group block h-full rounded-lg border p-6";
+const frame = "group block h-full rounded-lg border bg-card p-6";
 const linked = "hover:border-primary";
 
 // One card for cases, builds and highlights: eyebrow, title, tagline, up to three chips, a status.
@@ -54,7 +54,7 @@ export function ContentCard({
       <Heading className={cn("mt-2 font-serif group-hover:text-primary", titleSize[variant])}>
         {title}
       </Heading>
-      {tagline ? <p className="mt-2 text-muted-foreground">{tagline}</p> : null}
+      {tagline ? <p className="mt-2 text-foreground">{tagline}</p> : null}
       {chips && chips.length > 0 ? (
         <ul className="mt-4 flex flex-wrap gap-2">
           {chips.slice(0, 3).map((c) => (

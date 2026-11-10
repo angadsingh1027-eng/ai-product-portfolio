@@ -22,22 +22,22 @@ export const Route = createFileRoute("/")({
 
 function Hero() {
   return (
-    <section className="grid items-center gap-6 py-8 sm:grid-cols-[1fr_13rem] sm:gap-10 sm:py-16">
+    <section className="grid items-center gap-6 py-8 sm:grid-cols-[1fr_13rem] sm:gap-10 sm:py-16 lg:grid-cols-[1fr_17.5rem] lg:gap-14">
       {site.photo && (
         <img
           src={site.photo.src}
           alt={site.photo.alt}
           width={208}
           height={260}
-          className="size-28 rounded-full object-cover object-top sm:order-2 sm:h-65 sm:w-52 sm:rounded-2xl"
+          className="size-28 rounded-full object-cover object-top sm:order-2 sm:h-65 sm:w-52 sm:rounded-2xl lg:h-87.5 lg:w-70"
         />
       )}
       <div>
         <p className="text-sm font-medium text-primary">{p.eyebrow}</p>
-        <h1 className="mt-4 max-w-2xl font-serif text-4xl leading-tight sm:text-5xl">
+        <h1 className="mt-4 max-w-2xl font-serif text-4xl leading-tight sm:text-5xl lg:text-6xl">
           {p.headline}
         </h1>
-        <p className="mt-6 max-w-xl text-lg text-muted-foreground">{p.intro}</p>
+        <p className="mt-6 max-w-xl text-lg text-foreground sm:text-xl">{p.intro}</p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
             to={p.primaryCta.to}
@@ -84,7 +84,7 @@ function Slot({ cfg }: { cfg: SlotConfig }) {
             {items.map((x) => (
               <li key={x.title}>
                 <h3 className="font-serif text-xl">{x.title}</h3>
-                <p className="mt-2 text-muted-foreground">{x.text}</p>
+                <p className="mt-2 text-foreground">{x.text}</p>
               </li>
             ))}
           </ul>
